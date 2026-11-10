@@ -1,0 +1,23 @@
+env.local.sh
+.runtime/
+results/
+**/build/
+**/install/
+**/log/
+**/nlopt-build/
+**/__pycache__/
+*.pyc
+.pytest_cache/
+# Large localized scene dependencies are distributed in the full portable package.
+/final_racer/assets/scene_dependencies/
+# Local experimental validation reports are not published.
+/validation/
+# Keep generated outputs and local reference inputs out of version control.
+**/results/
+**/reference_result/
+**/checkpoints/
+**/tensorboard/
+**/training_state.json
+**/episode_metrics.json
+**/*_result.json
+**/*_results.json

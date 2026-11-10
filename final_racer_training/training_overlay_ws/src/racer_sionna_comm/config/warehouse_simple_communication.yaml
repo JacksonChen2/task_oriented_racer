@@ -1,0 +1,124 @@
+racer_sionna_communication_proxy:
+  ros__parameters:
+    mode: sionna
+    carrier_frequency_hz: 28000000000.0
+    bandwidth_hz: 100000000.0
+    subcarrier_spacing_hz: 120000.0
+    resource_blocks: 66
+    # BS-assisted modes split the same 100 MHz carrier into two disjoint
+    # 50 MHz / 33-PRB pools. Pure distributed mode continues to use all
+    # 100 MHz / 66 PRBs through the legacy fields above.
+    uav_broadcast_bandwidth_hz: 50000000.0
+    uav_broadcast_resource_blocks: 33
+    uav_broadcast_fixed_mcs_index: 14
+    bs_bandwidth_hz: 50000000.0
+    bs_resource_blocks: 33
+    data_re_efficiency: 0.82
+    target_initial_tbler: 0.10
+    tbler_slope_db: 1.35
+    transport_block_bytes: 1200
+    base_latency_ms: 0.5
+    jitter_ms: 0.1
+    queue_capacity_bytes: 16777216
+    max_retries: 3
+    retry_backoff_ms: 0.125
+    random_seed: 42
+    network_topology: distributed
+    lossless_nearest_neighbor_count: 0
+    lossless_communication_range_m: 0.0
+    lossless_control_only: false
+    directed_message_unicast: false
+    uav_udp_directed_unicast: true
+    uav_udp_header_bytes: 8
+    # U2U defaults to per-UAV CSMA random backoff over the complete shared UAV
+    # band, with no scheduler grants or fixed per-UAV subbands. Experiments
+    # that specifically require centralized OFDMA must opt in explicitly.
+    uav_channel_access_mode: csma
+    uav_csma_cw_min: 15
+    uav_csma_cw_max: 1023
+    uav_csma_difs_slots: 2
+    uav_ofdma_diagnostic_logging: true
+    uav_ofdma_log_packet_stride: 1000
+    # Optional CRPO file bridge. It is disabled by default, so all existing
+    # ideal/Sionna/AP/round-robin experiments retain their original behavior.
+    rl_bs_scheduler_enabled: false
+    # After a PROPOSE is delivered by the RL-scheduled BS path, reserve this
+    # pair's normal Sionna BS UL/DL queues until PREPARED/COMMIT/ACK completes.
+    pair_control_reservation_enabled: false
+    pair_control_reservation_s: 1.8
+    rl_bs_synchronous_mode: false
+    rl_bs_action_path: /tmp/racer_agentic_crpo/action.txt
+    rl_bs_state_path: /tmp/racer_agentic_crpo/communication_state.json
+    rl_bs_communication_slot_ms: 20.0
+    # The shared-memory RL scheduler publishes one action every five 20 ms
+    # communication slots.  Keep this node-specific default aligned with the
+    # launch-time wildcard override; ROS gives the node-specific YAML entry
+    # precedence over that wildcard value.
+    rl_bs_decision_period_ms: 100.0
+    # inline preserves the historical implementation. async keeps exact task
+    # metrics but moves voxel/trajectory bookkeeping off the forwarding path.
+    task_metric_observer_mode: inline
+    chunk_data_pre_enqueue_dedup: false
+    chunk_data_max_pending_per_link: 0
+    communication_range_m: 4.0
+    # Optional experiment control: deliver only the state exchange needed to
+    # form epoch 1 and epoch-1 assignment/ack traffic perfectly. It turns
+    # itself off after every UAV reports applying that epoch.
+    initial_assignment_perfect_delivery: false
+    initial_assignment_perfect_via_bs: false
+    active_link_hold_s: 1.0
+    active_link_publish_period_s: 0.02
+    bs_min_turn_ms: 10.0
+    bs_control_bytes: 32
+    # Zero lets the action-bound SNR/MCS quota and the real byte queue control
+    # admission. Positive values remain available as explicit experiment caps.
+    bs_max_downlink_chunks_per_turn: 0
+    bs_max_uplink_chunks_per_turn: 0
+    # Zero derives hard global ceilings from the RL slot and BS PHY.  Within
+    # those ceilings, every slot uses its action-bound channel SNR, adaptive
+    # MCS, NR serialization time and expected retries to choose fewer chunks
+    # on weak links.  At 20 ms and 100 MHz/66 PRBs the ceilings are 64 UL +
+    # 64 DL chunks, with 20% of the shared BS airtime reserved for control and
+    # retry variance.
+    bs_max_uplink_chunks_per_rl_slot: 0
+    bs_max_downlink_chunks_per_rl_slot: 0
+    ap_tx_power_dbm: 40.0
+    tx_power_dbm: 23.0
+    ap_array_rows: 8
+    ap_array_cols: 8
+    uav_array_rows: 4
+    uav_array_cols: 4
+
+racer_sionna_channel:
+  ros__parameters:
+    require_sionna: true
+    allow_analytic_fallback: false
+    carrier_frequency_hz: 28000000000.0
+    bandwidth_hz: 100000000.0
+    tx_power_dbm: 23.0
+    uav_antenna_gain_dbi: 0.0
+    ap_tx_power_dbm: 40.0
+    ap_antenna_gain_dbi: 0.0
+    uav_array_rows: 4
+    uav_array_cols: 4
+    ap_array_rows: 8
+    ap_array_cols: 8
+    directional_beamforming: true
+    small_scale_fading: none
+    ap_position: [0.0, 3.0, 8.10]
+    network_topology: distributed
+    receiver_noise_figure_db: 7.0
+    temperature_k: 290.0
+    solver_rate_hz: 0.5
+    publish_rate_hz: 10.0
+    link_validity_s: 0.5
+    max_exact_age_s: 5.0
+    max_channel_staleness_s: 5.0
+    active_link_hold_s: 1.0
+    recompute_distance_m: 0.4
+    max_depth: 2
+    samples_per_source: 100000
+    diffuse_reflection: false
+    refraction: true
+    random_seed: 42
+    fallback_path_loss_exponent: 2.2

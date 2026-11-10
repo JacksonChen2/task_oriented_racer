@@ -1,0 +1,22 @@
+/**:
+  ros__parameters:
+    use_sim_time: true
+    drone_count: 5
+    map_resolution: 0.30
+    # Covers RACER Chen warehouse_loaded; override for another world frame.
+    map_origin: [-28.1, -27.0, 0.0]
+    clearance_m: 0.45
+    failure_window_s: 3.0
+    failure_count: 20
+    minimum_progress_m: 0.25
+    maximum_recovery_distance_m: 3.0
+    staging_search_radius_m: 1.8
+    maximum_recovery_time_s: 12.0
+    maximum_speed_mps: 0.60
+    position_gain: 1.2
+    waypoint_tolerance_m: 0.35
+    settle_time_s: 0.40
+    cooldown_s: 8.0
+    cloud_min_period_s: 0.50
+    cloud_point_stride: 32
+    frontier_timeout_s: 5.0

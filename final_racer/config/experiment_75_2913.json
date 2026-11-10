@@ -1,0 +1,46 @@
+{
+  "name": "final_racer_perfect_communication_75_2913",
+  "reference_date": "2026-09-02",
+  "reference_joint_mapping_coverage": 0.752913131313,
+  "seed": 42,
+  "uav_count": 10,
+  "start_positions": [
+    [-20.75, 26.0, 0.75],
+    [-19.25, 26.0, 0.75],
+    [-18.75, 5.0, 0.75],
+    [-17.25, 5.0, 0.75],
+    [-11.75, 14.25, 0.75],
+    [-11.75, 15.75, 0.75],
+    [-0.75, 27.0, 0.75],
+    [0.75, 27.0, 0.75],
+    [-3.75, 5.0, 0.75],
+    [-2.25, 5.0, 0.75]
+  ],
+  "communication": {
+    "mode": "ideal",
+    "topology": "distributed",
+    "lossless": true,
+    "ideal_coalesce_window_ms": 20,
+    "max_retries": 0,
+    "bs_max_retries": 0
+  },
+  "simulation": {
+    "preflight_s": 15,
+    "formal_s": 300,
+    "physics_hz": 100,
+    "sensor_hz": 10,
+    "camera_ray_budget": 76800,
+    "sensor_workers": 8,
+    "scene_query_hz": 20,
+    "fixed_exploration_horizon": false
+  },
+  "passive_metrics": {
+    "enabled": true,
+    "observer_mode": "async",
+    "sample_period_s": 0.1,
+    "fields": [
+      "redundant_exploration_ratio",
+      "bs_global_map_iou"
+    ]
+  }
+}

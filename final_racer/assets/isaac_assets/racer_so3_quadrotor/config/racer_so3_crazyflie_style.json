@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "variant_name": "racer_so3_quadrotor_crazyflie_style",
+  "logical_vehicle": "racer_so3_quadrotor",
+  "dynamics_config": "racer_so3_model.json",
+  "description": "Crazyflie-inspired primitive visual shell for the source-faithful RACER SO3 plant",
+  "reference": {
+    "asset": "Isaac Sim 5.1 omni.warp Crazyflie example",
+    "copied_geometry": false,
+    "external_mesh_dependency": false,
+    "features_adapted": [
+      "layered central PCB",
+      "underslung battery",
+      "separate motor baskets and cans",
+      "thin two-blade propellers",
+      "visible electronics, pin racks and orientation LEDs"
+    ]
+  },
+  "invariants": {
+    "single_rigid_link": true,
+    "mass_kg": 0.98,
+    "center_of_mass_body_m": [0.0, 0.0, 0.0],
+    "inertia_diagonal_kg_m2": [0.00264, 0.00264, 0.00496],
+    "rotor_layout": "plus",
+    "rotor_centers_body_m": [
+      [0.26, 0.0, 0.0],
+      [-0.26, 0.0, 0.0],
+      [0.0, 0.26, 0.0],
+      [0.0, -0.26, 0.0]
+    ],
+    "propeller_radius_m": 0.062,
+    "collision_geometry_matches_base_variant": true,
+    "visuals_contribute_mass": false
+  },
+  "geometry": {
+    "visual_primitive_count": 38,
+    "collision_primitive_count": 7,
+    "visual_bounds_m": {
+      "minimum": [-0.308083, -0.308083, -0.034],
+      "maximum": [0.308083, 0.308083, 0.0505]
+    },
+    "notes": [
+      "Visual appearance is inferred; the RACER source repository has no aircraft CAD.",
+      "The rotor centers remain in the RACER plus layout rather than the Crazyflie X layout.",
+      "Propellers are visual-only and show one static phase of the 0.062 m swept radius."
+    ]
+  },
+  "outputs": {
+    "urdf": "../urdf/racer_so3_quadrotor_crazyflie_style.urdf",
+    "usd": "../usd/racer_so3_quadrotor_crazyflie_style.usd",
+    "flattened_usd": "../usd/racer_so3_quadrotor_crazyflie_style_flattened.usd",
+    "import_report": "../usd/racer_so3_quadrotor_crazyflie_style.import_report.json"
+  }
+}

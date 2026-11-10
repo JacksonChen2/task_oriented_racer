@@ -1,0 +1,11 @@
+builtin_interfaces/Time stamp
+builtin_interfaces/Time valid_until
+int32 sender_id
+int32 receiver_id
+float32 distance_m
+bool line_of_sight
+float32 path_gain_db
+float32 rss_dbm
+float32 snr_db
+float32 doppler_hz
+string model

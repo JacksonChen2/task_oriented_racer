@@ -1,0 +1,18 @@
+{
+  "layout": "five_sites_two_uavs_each_with_verified_southeast_takeoff_corridor",
+  "source_layout": "warehouse_full_10uav_five_sites_layout.json",
+  "changed_uav_ids": [3, 4],
+  "change_reason": "The original southeast pair seeded an empty known-free component; these two starts passed the existing 15-second all-UAV preflight.",
+  "start_positions": [
+    [-19.625, 4.475000381469727, 0.75],
+    [-19.625, 6.225000381469727, 0.75],
+    [-2.875, 7.225000381469727, 0.75],
+    [-1.375, 7.475000381469727, 0.75],
+    [-24.125, 25.475000381469727, 0.75],
+    [-22.625, 26.225000381469727, 0.75],
+    [2.375, 25.975000381469727, 0.75],
+    [1.375, 27.225000381469727, 0.75],
+    [-9.375, 14.225000381469727, 0.75],
+    [-9.375, 15.725000381469727, 0.75]
+  ]
+}

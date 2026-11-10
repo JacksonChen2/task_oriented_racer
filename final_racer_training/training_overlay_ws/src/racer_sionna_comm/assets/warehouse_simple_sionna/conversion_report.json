@@ -1,0 +1,238 @@
+{
+  "asset_dependency_count": 103,
+  "base_usds": [],
+  "bounds_max_m": [
+    11.960721969604492,
+    20.781715393066406,
+    9.300010681152344
+  ],
+  "bounds_min_m": [
+    -12.039277076721191,
+    -18.036365509033203,
+    -6.869831850053743e-05
+  ],
+  "exported_mesh_prim_count": 1877,
+  "geometry_mode": "oriented_bbox_proxy",
+  "input_usd": "/home/jiazheng/RACER_warehouse_loaded_portable_20260805/ros2_3d_py_ws/warehouse_simple.usd",
+  "mesh_prim_count": 1878,
+  "output_units": "meter",
+  "output_up_axis": "Z",
+  "output_xml": "/home/jiazheng/RACER_warehouse_loaded_portable_20260805/ros2_original_fidelity_sionna_ws/src/racer_sionna_comm/assets/warehouse_simple_sionna/warehouse.xml",
+  "prim_count": 8131,
+  "rf_material_groups": {
+    "ceiling_board": {
+      "bounds_max_m": [
+        11.960721969604492,
+        17.963764190673828,
+        9.011506080627441
+      ],
+      "bounds_min_m": [
+        -12.039277076721191,
+        -18.036365509033203,
+        3.0
+      ],
+      "file": "/home/jiazheng/RACER_warehouse_loaded_portable_20260805/ros2_original_fidelity_sionna_ws/src/racer_sionna_comm/assets/warehouse_simple_sionna/meshes/warehouse_ceiling_board.ply",
+      "file_size_bytes": 19871,
+      "source_meshes": 78,
+      "triangles": 936,
+      "vertices": 624
+    },
+    "chipboard": {
+      "bounds_max_m": [
+        -3.84358811378479,
+        17.963634490966797,
+        6.267142295837402
+      ],
+      "bounds_min_m": [
+        -6.722995281219482,
+        17.549335479736328,
+        1.2044651157339104e-05
+      ],
+      "file": "/home/jiazheng/RACER_warehouse_loaded_portable_20260805/ros2_original_fidelity_sionna_ws/src/racer_sionna_comm/assets/warehouse_simple_sionna/meshes/warehouse_chipboard.ply",
+      "file_size_bytes": 717,
+      "source_meshes": 2,
+      "triangles": 24,
+      "vertices": 16
+    },
+    "concrete": {
+      "bounds_max_m": [
+        11.960721969604492,
+        17.97791862487793,
+        9.300010681152344
+      ],
+      "bounds_min_m": [
+        -12.039277076721191,
+        -18.036365509033203,
+        -8.583068478174027e-08
+      ],
+      "file": "/home/jiazheng/RACER_warehouse_loaded_portable_20260805/ros2_original_fidelity_sionna_ws/src/racer_sionna_comm/assets/warehouse_simple_sionna/meshes/warehouse_concrete.ply",
+      "file_size_bytes": 18359,
+      "source_meshes": 72,
+      "triangles": 864,
+      "vertices": 576
+    },
+    "metal": {
+      "bounds_max_m": [
+        11.374038696289062,
+        20.781715393066406,
+        9.050000190734863
+      ],
+      "bounds_min_m": [
+        -10.469278335571289,
+        -12.236495971679688,
+        -6.869831850053743e-05
+      ],
+      "file": "/home/jiazheng/RACER_warehouse_loaded_portable_20260805/ros2_original_fidelity_sionna_ws/src/racer_sionna_comm/assets/warehouse_simple_sionna/meshes/warehouse_metal.ply",
+      "file_size_bytes": 434919,
+      "source_meshes": 1725,
+      "triangles": 20700,
+      "vertices": 13800
+    }
+  },
+  "rf_material_note": "USD visual materials were heuristically mapped to Sionna ITU radio materials. Plastic/rubber is approximated as plywood; unrecognized geometry uses concrete.",
+  "skipped_invisible_or_guide": 1,
+  "source_face_count": 0,
+  "source_meters_per_unit": 1.0,
+  "source_up_axis": "Z",
+  "source_vertex_count": 0,
+  "top_usd_material_names": [
+    [
+      "FOF_Mesh_LabelsSG",
+      381
+    ],
+    [
+      "FOF_Mesh_StickerSG",
+      381
+    ],
+    [
+      "FOF_Mesh_Magenta_BoxSG",
+      381
+    ],
+    [
+      "MI_CardBoxA",
+      118
+    ],
+    [
+      "MI_SignC",
+      87
+    ],
+    [
+      "MI_RackSetC_01",
+      69
+    ],
+    [
+      "MI_PaletteSmallA_01",
+      55
+    ],
+    [
+      "MI_RackSetD_01",
+      39
+    ],
+    [
+      "MI_RackSetA_01",
+      39
+    ],
+    [
+      "MI_BeamsA_01",
+      37
+    ],
+    [
+      "MI_CeilingA_01",
+      36
+    ],
+    [
+      "M_FloorStripes_01",
+      31
+    ],
+    [
+      "MI_FrameA_01",
+      30
+    ],
+    [
+      "MI_RackSetB_01",
+      30
+    ],
+    [
+      "MI_WallB_01",
+      24
+    ],
+    [
+      "MI_Floor_01",
+      24
+    ],
+    [
+      "MI_WallA_01",
+      18
+    ],
+    [
+      "MI_BeamsA_02",
+      18
+    ],
+    [
+      "MI_Barcode_0001",
+      18
+    ],
+    [
+      "MI_WallDetails_01",
+      11
+    ],
+    [
+      "MI_LampCeilingA",
+      9
+    ],
+    [
+      "M_Glow",
+      9
+    ],
+    [
+      "MI_RackShield_01",
+      6
+    ],
+    [
+      "MI_FireExtinguisher_01",
+      6
+    ],
+    [
+      "MI_CardBoxD",
+      5
+    ],
+    [
+      "MI_SignB",
+      2
+    ],
+    [
+      "MI_AisleSign_Text_03",
+      2
+    ],
+    [
+      "MI_AisleSign_Text_02",
+      2
+    ],
+    [
+      "MI_CratePlasticA_03",
+      2
+    ],
+    [
+      "M_AisleSign",
+      2
+    ],
+    [
+      "MI_PushcartA_01",
+      2
+    ],
+    [
+      "M_SignA",
+      1
+    ],
+    [
+      "MI_CratePlasticB_06",
+      1
+    ],
+    [
+      "MI_CratePlasticC_05",
+      1
+    ]
+  ],
+  "triangle_count": 22524,
+  "unresolved_dependencies": []
+}

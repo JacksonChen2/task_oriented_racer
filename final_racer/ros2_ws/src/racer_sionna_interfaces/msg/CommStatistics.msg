@@ -1,0 +1,13 @@
+builtin_interfaces/Time stamp
+uint64 attempted_packets
+uint64 delivered_packets
+uint64 dropped_no_link
+uint64 dropped_per
+uint64 dropped_queue
+uint64 dropped_ttl
+uint64 retried_packets
+uint64 attempted_bytes
+uint64 delivered_bytes
+uint64 queued_packets
+uint64 queued_bytes
+float32 mean_delivery_delay_ms

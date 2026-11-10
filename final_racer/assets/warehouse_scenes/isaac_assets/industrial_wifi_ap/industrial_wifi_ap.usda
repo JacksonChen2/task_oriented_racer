@@ -1,0 +1,205 @@
+#usda 1.0
+(
+    defaultPrim = "IndustrialWifiAP"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "IndustrialWifiAP" (
+    customData = {
+        string description = "Ceiling-mounted industrial Wi-Fi access point"
+        string manufacturerClass = "generic industrial AP"
+    }
+)
+{
+    custom string radio:role = "infrastructure_access_point"
+    custom string radio:standard = "IEEE 802.11ax"
+    custom double radio:carrierFrequencyHz = 2437000000
+    custom int radio:channel = 6
+    custom double radio:bandwidthHz = 20000000
+    custom double radio:txPowerDbm = 20
+    custom double radio:antennaGainDbi = 4
+    custom double radio:maxEirpDbm = 24
+    custom double radio:receiverNoiseFigureDb = 7
+    custom string radio:antennaPattern = "ceiling_omnidirectional"
+    custom string radio:polarization = "dual_linear"
+    custom string radio:enclosureRating = "IP67"
+
+    # The visible enclosure below uses USD analytic primitives. The Sionna
+    # scene baker intentionally consumes triangle meshes, so this coincident
+    # low-poly proxy makes the AP enclosure part of the RF ray-tracing scene.
+    def Mesh "MetalRadioObstacleProxy"
+    {
+        int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+        int[] faceVertexIndices = [
+            0, 1, 2, 3,
+            4, 7, 6, 5,
+            0, 4, 5, 1,
+            1, 5, 6, 2,
+            2, 6, 7, 3,
+            4, 0, 3, 7
+        ]
+        point3f[] points = [
+            (-0.26, -0.21, 0.0),
+            ( 0.26, -0.21, 0.0),
+            ( 0.26,  0.21, 0.0),
+            (-0.26,  0.21, 0.0),
+            (-0.26, -0.21, -0.335),
+            ( 0.26, -0.21, -0.335),
+            ( 0.26,  0.21, -0.335),
+            (-0.26,  0.21, -0.335)
+        ]
+        uniform token subdivisionScheme = "none"
+    }
+
+    def Scope "Looks"
+    {
+        def Material "MountDark"
+        {
+            token outputs:surface.connect = </IndustrialWifiAP/Looks/MountDark/Shader.outputs:surface>
+            def Shader "Shader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.035, 0.045, 0.055)
+                float inputs:metallic = 0.72
+                float inputs:roughness = 0.30
+                token outputs:surface
+            }
+        }
+
+        def Material "EnclosureWhite"
+        {
+            token outputs:surface.connect = </IndustrialWifiAP/Looks/EnclosureWhite/Shader.outputs:surface>
+            def Shader "Shader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.72, 0.77, 0.80)
+                float inputs:metallic = 0.08
+                float inputs:roughness = 0.34
+                token outputs:surface
+            }
+        }
+
+        def Material "RadioBlue"
+        {
+            token outputs:surface.connect = </IndustrialWifiAP/Looks/RadioBlue/Shader.outputs:surface>
+            def Shader "Shader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.015, 0.22, 0.75)
+                color3f inputs:emissiveColor = (0.02, 0.32, 1.0)
+                float inputs:metallic = 0.15
+                float inputs:roughness = 0.22
+                token outputs:surface
+            }
+        }
+
+        def Material "StatusGreen"
+        {
+            token outputs:surface.connect = </IndustrialWifiAP/Looks/StatusGreen/Shader.outputs:surface>
+            def Shader "Shader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.01, 0.55, 0.08)
+                color3f inputs:emissiveColor = (0.02, 1.0, 0.12)
+                float inputs:roughness = 0.18
+                token outputs:surface
+            }
+        }
+    }
+
+    def Xform "MountingPlate"
+    {
+        def Cube "Plate"
+        {
+            rel material:binding = </IndustrialWifiAP/Looks/MountDark>
+            double size = 1
+            double3 xformOp:scale = (0.52, 0.42, 0.035)
+            double3 xformOp:translate = (0, 0, -0.0175)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+    }
+
+    def Xform "Enclosure"
+    {
+        def Cube "MainBody"
+        {
+            rel material:binding = </IndustrialWifiAP/Looks/EnclosureWhite>
+            double size = 1
+            double3 xformOp:scale = (0.46, 0.35, 0.105)
+            double3 xformOp:translate = (0, 0, -0.0875)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "BottomPanel"
+        {
+            rel material:binding = </IndustrialWifiAP/Looks/MountDark>
+            double size = 1
+            double3 xformOp:scale = (0.40, 0.29, 0.018)
+            double3 xformOp:translate = (0, 0, -0.149)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Torus "RadioRingOuter"
+        {
+            rel material:binding = </IndustrialWifiAP/Looks/RadioBlue>
+            double majorRadius = 0.095
+            double minorRadius = 0.009
+            double3 xformOp:translate = (0, 0, -0.164)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Torus "RadioRingInner"
+        {
+            rel material:binding = </IndustrialWifiAP/Looks/RadioBlue>
+            double majorRadius = 0.054
+            double minorRadius = 0.008
+            double3 xformOp:translate = (0, 0, -0.164)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Sphere "StatusLED"
+        {
+            rel material:binding = </IndustrialWifiAP/Looks/StatusGreen>
+            double radius = 0.014
+            double3 xformOp:translate = (0.145, -0.090, -0.171)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+
+    def Xform "Antennas"
+    {
+        def Cylinder "AntennaFrontLeft"
+        {
+            rel material:binding = </IndustrialWifiAP/Looks/MountDark>
+            double radius = 0.012
+            double height = 0.24
+            double3 xformOp:translate = (-0.195, -0.145, -0.215)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+        def Cylinder "AntennaFrontRight"
+        {
+            rel material:binding = </IndustrialWifiAP/Looks/MountDark>
+            double radius = 0.012
+            double height = 0.24
+            double3 xformOp:translate = (0.195, -0.145, -0.215)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+        def Cylinder "AntennaRearLeft"
+        {
+            rel material:binding = </IndustrialWifiAP/Looks/MountDark>
+            double radius = 0.012
+            double height = 0.24
+            double3 xformOp:translate = (-0.195, 0.145, -0.215)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+        def Cylinder "AntennaRearRight"
+        {
+            rel material:binding = </IndustrialWifiAP/Looks/MountDark>
+            double radius = 0.012
+            double height = 0.24
+            double3 xformOp:translate = (0.195, 0.145, -0.215)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+}

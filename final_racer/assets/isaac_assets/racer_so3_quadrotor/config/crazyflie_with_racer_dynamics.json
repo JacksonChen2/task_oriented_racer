@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "variant_name": "crazyflie_with_racer_dynamics",
+  "logical_vehicle": "racer_so3_quadrotor",
+  "description": "Embedded Crazyflie rendering mesh with the complete original RACER SO3 rigid-body, collision, rotor-frame and propulsion configuration.",
+  "visual": {
+    "source": "crazyflie.usd",
+    "source_role": "rendering_only",
+    "embedded_in_output": true,
+    "external_runtime_dependency": false,
+    "source_up_axis": "Y",
+    "target_up_axis": "Z",
+    "source_layout": "X",
+    "target_layout": "plus",
+    "yaw_after_axis_conversion_deg": 45.0,
+    "source_xyz_scale": [
+      6.218486285088883,
+      3.3111529082782845,
+      6.175274938925091
+    ],
+    "target_propeller_height_m": 0.04,
+    "target_propeller_radius_m": 0.062,
+    "embedded_mesh_count": 12,
+    "propeller_animation": {
+      "mode": "render_only_xform",
+      "angle_source": "integrated RACER motor_rpm",
+      "degrees_per_rpm_second": 6.0,
+      "local_rotation_axis": "Y",
+      "rotor_spin_direction_signs": [
+        -1,
+        -1,
+        1,
+        1
+      ],
+      "physics_effect": "none"
+    }
+  },
+  "physics": {
+    "authoritative_config": "racer_so3_model.json",
+    "template": "../usd/racer_so3_quadrotor_flattened.usd",
+    "mass_kg": 0.98,
+    "center_of_mass_body_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "inertia_diagonal_kg_m2": [
+      0.00264,
+      0.00264,
+      0.00496
+    ],
+    "rotor_layout": "plus",
+    "rotor_centers_body_m": [
+      [
+        0.26,
+        0.0,
+        0.0
+      ],
+      [
+        -0.26,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.26,
+        0.0
+      ],
+      [
+        0.0,
+        -0.26,
+        0.0
+      ]
+    ],
+    "collision_count": 7,
+    "visual_meshes_have_physics_apis": false
+  },
+  "files": {
+    "generator": "../scripts/build_crazyflie_racer_dynamics_usd.py",
+    "output": "../usd/crazyflie_with_racer_dynamics.usd"
+  },
+  "notes": [
+    "The Crazyflie mesh is copied into the generated USD; opening the output does not reference the Isaac Sim installation path.",
+    "The original Crazyflie rigid-body model is not used.",
+    "Visible propeller axes coincide with RACER rotor frames; visual blades are resized to the RACER 0.062 m propeller radius.",
+    "Each propeller parent carries racer:rotorId, racer:spinDirectionSign and racer:visualRotationAxis metadata for the runtime animator.",
+    "The seven inferred RACER collision primitives are retained instead of generating collisions from the detailed visual meshes."
+  ]
+}

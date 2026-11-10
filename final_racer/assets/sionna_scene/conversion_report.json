@@ -1,0 +1,296 @@
+{
+  "asset_dependency_count": 227,
+  "base_usds": [],
+  "bounds_max_m": [
+    7.971085548400879,
+    33.42423629760742,
+    9.30000114440918
+  ],
+  "bounds_min_m": [
+    -28.028913497924805,
+    0.6061432957649231,
+    -0.009031959809362888
+  ],
+  "exported_mesh_prim_count": 3586,
+  "geometry_mode": "oriented_bbox_proxy",
+  "input_usd": "warehouse_full_with_industrial_ap.usda",
+  "mesh_prim_count": 3592,
+  "output_units": "meter",
+  "output_up_axis": "Z",
+  "output_xml": "warehouse.xml",
+  "prim_count": 26632,
+  "rf_material_groups": {
+    "ceiling_board": {
+      "bounds_max_m": [
+        7.971085548400879,
+        30.606271743774414,
+        9.011507034301758
+      ],
+      "bounds_min_m": [
+        -28.028913497924805,
+        0.6061432957649231,
+        3.0
+      ],
+      "file": "warehouse_ceiling_board.ply",
+      "file_size_bytes": 27936,
+      "source_meshes": 110,
+      "triangles": 1320,
+      "vertices": 880
+    },
+    "chipboard": {
+      "bounds_max_m": [
+        4.947534084320068,
+        30.606143951416016,
+        6.267131805419922
+      ],
+      "bounds_min_m": [
+        -26.329072952270508,
+        6.329049110412598,
+        -2.47955313170678e-07
+      ],
+      "file": "warehouse_chipboard.ply",
+      "file_size_bytes": 480027,
+      "source_meshes": 1904,
+      "triangles": 22848,
+      "vertices": 15232
+    },
+    "concrete": {
+      "bounds_max_m": [
+        7.971085548400879,
+        30.6207218170166,
+        9.30000114440918
+      ],
+      "bounds_min_m": [
+        -28.028913497924805,
+        0.6061432957649231,
+        -8.583068478174027e-08
+      ],
+      "file": "warehouse_concrete.ply",
+      "file_size_bytes": 101017,
+      "source_meshes": 400,
+      "triangles": 4800,
+      "vertices": 3200
+    },
+    "metal": {
+      "bounds_max_m": [
+        5.531085014343262,
+        33.42423629760742,
+        9.050000190734863
+      ],
+      "bounds_min_m": [
+        -26.45891571044922,
+        2.9760942459106445,
+        -0.0019066845998167992
+      ],
+      "file": "warehouse_metal.ply",
+      "file_size_bytes": 201565,
+      "source_meshes": 799,
+      "triangles": 9588,
+      "vertices": 6392
+    },
+    "plywood": {
+      "bounds_max_m": [
+        -1.1102925539016724,
+        24.820999145507812,
+        3.9113595485687256
+      ],
+      "bounds_min_m": [
+        -15.990806579589844,
+        8.829171180725098,
+        -0.009031959809362888
+      ],
+      "file": "warehouse_plywood.ply",
+      "file_size_bytes": 54397,
+      "source_meshes": 215,
+      "triangles": 2580,
+      "vertices": 1720
+    },
+    "wood": {
+      "bounds_max_m": [
+        5.103590488433838,
+        24.77091407775879,
+        4.311116695404053
+      ],
+      "bounds_min_m": [
+        -26.031396865844727,
+        8.940300941467285,
+        -0.00017162565200123936
+      ],
+      "file": "warehouse_wood.ply",
+      "file_size_bytes": 40033,
+      "source_meshes": 158,
+      "triangles": 1896,
+      "vertices": 1264
+    }
+  },
+  "rf_material_note": "USD visual materials were heuristically mapped to Sionna ITU radio materials. Plastic/rubber is approximated as plywood; unrecognized geometry uses concrete.",
+  "skipped_invisible_or_guide": 6,
+  "source_face_count": 0,
+  "source_meters_per_unit": 1.0,
+  "source_up_axis": "Z",
+  "source_vertex_count": 0,
+  "top_usd_material_names": [
+    [
+      "MI_SignC",
+      195
+    ],
+    [
+      "MI_RackSetC_03",
+      160
+    ],
+    [
+      "MI_PaletteSmallA_01",
+      158
+    ],
+    [
+      "MI_BottlesPlastic_01",
+      120
+    ],
+    [
+      "Crate",
+      94
+    ],
+    [
+      "MI_RackSetD_05",
+      90
+    ],
+    [
+      "MI_RackSetA_01",
+      90
+    ],
+    [
+      "MI_CeilingA_06b",
+      74
+    ],
+    [
+      "M_FloorStripes_01",
+      72
+    ],
+    [
+      "MI_RackSetB_03",
+      70
+    ],
+    [
+      "MI_CardBoxD",
+      57
+    ],
+    [
+      "Shelf",
+      39
+    ],
+    [
+      "MI_CardBoxC",
+      38
+    ],
+    [
+      "MI_BeamsA_05",
+      36
+    ],
+    [
+      "Pallet",
+      32
+    ],
+    [
+      "MI_CardBoxA",
+      31
+    ],
+    [
+      "MI_Floor_02b",
+      30
+    ],
+    [
+      "MI_CardBoxB",
+      29
+    ],
+    [
+      "MI_WallA_03b",
+      23
+    ],
+    [
+      "MI_BeamsA_02b",
+      23
+    ],
+    [
+      "M_CubeBox_Decal_01",
+      21
+    ],
+    [
+      "Cardboard_B3",
+      20
+    ],
+    [
+      "MI_WallDetails_01",
+      19
+    ],
+    [
+      "Cardboard_C2",
+      19
+    ],
+    [
+      "MI_LampCeilingA",
+      18
+    ],
+    [
+      "M_Glow",
+      18
+    ],
+    [
+      "MI_CratePlasticB_06",
+      18
+    ],
+    [
+      "MI_FrameA_02",
+      17
+    ],
+    [
+      "Cardboard_D1",
+      16
+    ],
+    [
+      "MI_BarelPlasticC_01",
+      15
+    ],
+    [
+      "MI_CratePlasticA_03",
+      15
+    ],
+    [
+      "MI_FrameA_05",
+      14
+    ],
+    [
+      "MI_RackShield_01",
+      14
+    ],
+    [
+      "MI_PaperNotes_01",
+      13
+    ],
+    [
+      "Cardboard_B2",
+      13
+    ],
+    [
+      "Cardboard_A2",
+      11
+    ],
+    [
+      "MI_Barcode_0001",
+      9
+    ],
+    [
+      "Cardboard_A",
+      9
+    ],
+    [
+      "Cardboard_C3",
+      9
+    ],
+    [
+      "MI_BeamsA_02",
+      8
+    ]
+  ],
+  "triangle_count": 43032,
+  "unresolved_dependencies": []
+}

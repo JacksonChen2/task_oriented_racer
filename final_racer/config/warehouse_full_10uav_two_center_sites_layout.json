@@ -1,0 +1,37 @@
+{
+  "scene": "../assets/warehouse_scenes/isaac/warehouse_full_with_industrial_ap.usda",
+  "layout": "two_center_adjacent_aisles_five_uavs_each",
+  "selection_rule": "the two nearest open takeoff regions on opposite sides of the rack containing the geometric scene centre; five UAVs per region; 0.45 m clear start box; 0.40 m clear vertical takeoff corridor through z=2.75 m; minimum 1.20 m 3-D start spacing",
+  "validation_source": "../hybrid_communication_racer/config/warehouse_full_10uav_two_center_sites_layout.json",
+  "drone_count": 10,
+  "minimum_global_spacing_m": 1.2499999999999993,
+  "regions": [
+    {
+      "name": "left_of_center_rack",
+      "aisle_center_xy_m": [-13.2, 15.43],
+      "assigned_drone_ids": [1, 2, 3, 4, 5]
+    },
+    {
+      "name": "right_of_center_rack_nearest_open_aisle",
+      "aisle_center_xy_m": [-7.32, 15.96],
+      "assigned_drone_ids": [6, 7, 8, 9, 10]
+    }
+  ],
+  "start_positions": [
+    [-14.49, 14.91, 0.8],
+    [-13.2, 14.91, 1.5],
+    [-11.91, 14.91, 2.2],
+    [-11.91, 16.2, 1.15],
+    [-13.2, 16.2, 1.85],
+    [-7.8, 15.0, 0.8],
+    [-6.6, 15.0, 1.5],
+    [-7.8, 16.2, 2.2],
+    [-6.6, 16.2, 1.15],
+    [-7.8, 17.4, 1.85]
+  ],
+  "collision_checks": {
+    "start_box_clear": true,
+    "vertical_takeoff_corridor_clear": true,
+    "validation_ok": true
+  }
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dds xmlns="http://www.eprosima.com">
+  <profiles>
+    <participant profile_name="racer_large_scale" is_default_profile="true">
+      <rtps>
+        <builtin>
+          <mutation_tries>1000</mutation_tries>
+        </builtin>
+      </rtps>
+    </participant>
+  </profiles>
+</dds>

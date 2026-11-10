@@ -1,0 +1,10 @@
+int32 from_drone_id
+int32 to_drone_id
+int32 STATUS_REJECTED=0
+int32 STATUS_PREPARED=1
+int32 STATUS_BUSY=2
+int32 STATUS_COMMITTED=3
+int32 status
+float64 stamp
+uint64 transaction_id
+uint64 responder_assignment_epoch

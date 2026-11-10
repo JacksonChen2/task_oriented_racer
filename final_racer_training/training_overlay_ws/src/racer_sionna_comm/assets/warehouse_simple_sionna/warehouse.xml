@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<scene version="2.1.0">
+  <!-- Geometry baked from Isaac USD; RF materials are semantic approximations. -->
+  <bsdf type="itu-radio-material" id="concrete">
+    <string name="type" value="concrete" />
+    <float name="thickness" value="0.1" />
+  </bsdf>
+  <bsdf type="itu-radio-material" id="metal">
+    <string name="type" value="metal" />
+    <float name="thickness" value="0.1" />
+  </bsdf>
+  <bsdf type="itu-radio-material" id="chipboard">
+    <string name="type" value="chipboard" />
+    <float name="thickness" value="0.1" />
+  </bsdf>
+  <bsdf type="itu-radio-material" id="ceiling_board">
+    <string name="type" value="ceiling_board" />
+    <float name="thickness" value="0.1" />
+  </bsdf>
+  <shape type="ply" id="mesh-warehouse-concrete" name="mesh-warehouse-concrete">
+    <string name="filename" value="meshes/warehouse_concrete.ply" />
+    <boolean name="face_normals" value="true" />
+    <ref id="concrete" name="bsdf" />
+  </shape>
+  <shape type="ply" id="mesh-warehouse-metal" name="mesh-warehouse-metal">
+    <string name="filename" value="meshes/warehouse_metal.ply" />
+    <boolean name="face_normals" value="true" />
+    <ref id="metal" name="bsdf" />
+  </shape>
+  <shape type="ply" id="mesh-warehouse-chipboard" name="mesh-warehouse-chipboard">
+    <string name="filename" value="meshes/warehouse_chipboard.ply" />
+    <boolean name="face_normals" value="true" />
+    <ref id="chipboard" name="bsdf" />
+  </shape>
+  <shape type="ply" id="mesh-warehouse-ceiling_board" name="mesh-warehouse-ceiling_board">
+    <string name="filename" value="meshes/warehouse_ceiling_board.ply" />
+    <boolean name="face_normals" value="true" />
+    <ref id="ceiling_board" name="bsdf" />
+  </shape>
+</scene>

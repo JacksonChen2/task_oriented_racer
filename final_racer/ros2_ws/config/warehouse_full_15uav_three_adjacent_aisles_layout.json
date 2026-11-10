@@ -1,0 +1,344 @@
+{
+  "scene": "/home/jiazheng/RACER_warehouse_loaded_portable_20260805/racer_chen/warehouse_scenes/isaac/warehouse_full_with_industrial_ap.usda",
+  "layout": "three_adjacent_aisles_five_uavs_each",
+  "selection_rule": "three adjacent open aisles around the scene centre, with one rack row between each side aisle and the centre aisle; five UAVs per aisle; 0.45 m clear start box; 0.40 m clear vertical takeoff corridor through z=2.75 m; minimum 1.20 m 3-D start spacing",
+  "drone_count": 15,
+  "minimum_global_spacing_m": 1.2499999999999993,
+  "regions": [
+    {
+      "name": "left_adjacent_aisle",
+      "aisle_center_xy_m": [
+        -13.2,
+        15.43
+      ],
+      "separated_from_center_by_rack_x_m": -10.5,
+      "uavs": [
+        [
+          -14.49,
+          14.91,
+          0.8
+        ],
+        [
+          -13.2,
+          14.91,
+          1.5
+        ],
+        [
+          -11.91,
+          14.91,
+          2.2
+        ],
+        [
+          -11.91,
+          16.2,
+          1.15
+        ],
+        [
+          -13.2,
+          16.2,
+          1.85
+        ]
+      ]
+    },
+    {
+      "name": "center_nearest_open_aisle",
+      "aisle_center_xy_m": [
+        -7.32,
+        15.96
+      ],
+      "uavs": [
+        [
+          -7.8,
+          15.0,
+          0.8
+        ],
+        [
+          -6.6,
+          15.0,
+          1.5
+        ],
+        [
+          -7.8,
+          16.2,
+          2.2
+        ],
+        [
+          -6.6,
+          16.2,
+          1.15
+        ],
+        [
+          -7.8,
+          17.4,
+          1.85
+        ]
+      ]
+    },
+    {
+      "name": "right_adjacent_aisle",
+      "aisle_center_xy_m": [
+        -2.97,
+        15.04
+      ],
+      "separated_from_center_by_rack_x_m": -5.6,
+      "uavs": [
+        [
+          -3.75,
+          16.6,
+          0.8
+        ],
+        [
+          -2.45,
+          15.3,
+          1.5
+        ],
+        [
+          -2.45,
+          16.6,
+          2.2
+        ],
+        [
+          -3.75,
+          14.0,
+          1.15
+        ],
+        [
+          -3.75,
+          15.3,
+          1.85
+        ]
+      ]
+    }
+  ],
+  "collision_checks": [
+    {
+      "drone_id": 1,
+      "position": [
+        -14.49,
+        14.91,
+        0.8
+      ],
+      "start_box_clear": true,
+      "vertical_takeoff_corridor_clear": true
+    },
+    {
+      "drone_id": 2,
+      "position": [
+        -13.2,
+        14.91,
+        1.5
+      ],
+      "start_box_clear": true,
+      "vertical_takeoff_corridor_clear": true
+    },
+    {
+      "drone_id": 3,
+      "position": [
+        -11.91,
+        14.91,
+        2.2
+      ],
+      "start_box_clear": true,
+      "vertical_takeoff_corridor_clear": true
+    },
+    {
+      "drone_id": 4,
+      "position": [
+        -11.91,
+        16.2,
+        1.15
+      ],
+      "start_box_clear": true,
+      "vertical_takeoff_corridor_clear": true
+    },
+    {
+      "drone_id": 5,
+      "position": [
+        -13.2,
+        16.2,
+        1.85
+      ],
+      "start_box_clear": true,
+      "vertical_takeoff_corridor_clear": true
+    },
+    {
+      "drone_id": 6,
+      "position": [
+        -7.8,
+        15.0,
+        0.8
+      ],
+      "start_box_clear": true,
+      "vertical_takeoff_corridor_clear": true
+    },
+    {
+      "drone_id": 7,
+      "position": [
+        -6.6,
+        15.0,
+        1.5
+      ],
+      "start_box_clear": true,
+      "vertical_takeoff_corridor_clear": true
+    },
+    {
+      "drone_id": 8,
+      "position": [
+        -7.8,
+        16.2,
+        2.2
+      ],
+      "start_box_clear": true,
+      "vertical_takeoff_corridor_clear": true
+    },
+    {
+      "drone_id": 9,
+      "position": [
+        -6.6,
+        16.2,
+        1.15
+      ],
+      "start_box_clear": true,
+      "vertical_takeoff_corridor_clear": true
+    },
+    {
+      "drone_id": 10,
+      "position": [
+        -7.8,
+        17.4,
+        1.85
+      ],
+      "start_box_clear": true,
+      "vertical_takeoff_corridor_clear": true
+    },
+    {
+      "drone_id": 11,
+      "position": [
+        -3.75,
+        16.6,
+        0.8
+      ],
+      "start_box_clear": true,
+      "vertical_takeoff_corridor_clear": true
+    },
+    {
+      "drone_id": 12,
+      "position": [
+        -2.45,
+        15.3,
+        1.5
+      ],
+      "start_box_clear": true,
+      "vertical_takeoff_corridor_clear": true
+    },
+    {
+      "drone_id": 13,
+      "position": [
+        -2.45,
+        16.6,
+        2.2
+      ],
+      "start_box_clear": true,
+      "vertical_takeoff_corridor_clear": true
+    },
+    {
+      "drone_id": 14,
+      "position": [
+        -3.75,
+        14.0,
+        1.15
+      ],
+      "start_box_clear": true,
+      "vertical_takeoff_corridor_clear": true
+    },
+    {
+      "drone_id": 15,
+      "position": [
+        -3.75,
+        15.3,
+        1.85
+      ],
+      "start_box_clear": true,
+      "vertical_takeoff_corridor_clear": true
+    }
+  ],
+  "start_positions": [
+    [
+      -14.49,
+      14.91,
+      0.8
+    ],
+    [
+      -13.2,
+      14.91,
+      1.5
+    ],
+    [
+      -11.91,
+      14.91,
+      2.2
+    ],
+    [
+      -11.91,
+      16.2,
+      1.15
+    ],
+    [
+      -13.2,
+      16.2,
+      1.85
+    ],
+    [
+      -7.8,
+      15.0,
+      0.8
+    ],
+    [
+      -6.6,
+      15.0,
+      1.5
+    ],
+    [
+      -7.8,
+      16.2,
+      2.2
+    ],
+    [
+      -6.6,
+      16.2,
+      1.15
+    ],
+    [
+      -7.8,
+      17.4,
+      1.85
+    ],
+    [
+      -3.75,
+      16.6,
+      0.8
+    ],
+    [
+      -2.45,
+      15.3,
+      1.5
+    ],
+    [
+      -2.45,
+      16.6,
+      2.2
+    ],
+    [
+      -3.75,
+      14.0,
+      1.15
+    ],
+    [
+      -3.75,
+      15.3,
+      1.85
+    ]
+  ],
+  "validation_ok": true,
+  "validation_errors": []
+}

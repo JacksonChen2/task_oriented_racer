@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "model_name": "racer_so3_quadrotor",
+  "provenance": {
+    "dynamics_source": "uav_simulator/so3_quadrotor_simulator/src/dynamics/Quadrotor.cpp",
+    "mixer_source": "uav_simulator/so3_quadrotor_simulator/src/quadrotor_simulator_so3.cpp",
+    "controller_source": "uav_simulator/so3_control and swarm_exploration/plan_manage/src/traj_server.cpp",
+    "sensor_source": "uav_simulator/local_sensing/src/pcl_render_node.cpp",
+    "note": "Dynamics are source-faithful. Visual and collision geometry are inferred because upstream contains no CAD or URDF."
+  },
+  "frames": {
+    "world": "ENU: +X east/forward in the default scene, +Y left/north, +Z up",
+    "body": "ROS FLU: +X forward, +Y left, +Z up",
+    "thrust_axis_body": [0.0, 0.0, 1.0],
+    "camera_optical": {
+      "translation_body_m": [0.0, 0.0, 0.0],
+      "quaternion_body_from_camera_wxyz": [0.5, -0.5, 0.5, -0.5],
+      "rotation_body_from_camera": [
+        [0.0, 0.0, 1.0],
+        [-1.0, 0.0, 0.0],
+        [0.0, -1.0, 0.0]
+      ],
+      "meaning": "camera +Z forward, +X right, +Y down; zero translation matches pcl_render_node.cpp"
+    },
+    "imu": {
+      "translation_body_m": [0.0, 0.0, 0.0],
+      "quaternion_body_from_imu_wxyz": [1.0, 0.0, 0.0, 0.0]
+    }
+  },
+  "rigid_body": {
+    "mass_kg": 0.98,
+    "center_of_mass_body_m": [0.0, 0.0, 0.0],
+    "inertia_kg_m2": [
+      [0.00264, 0.0, 0.0],
+      [0.0, 0.00264, 0.0],
+      [0.0, 0.0, 0.00496]
+    ],
+    "gravity_m_s2": 9.81
+  },
+  "rotors": [
+    {
+      "id": 0,
+      "position_body_m": [0.26, 0.0, 0.0],
+      "yaw_torque_sign": 1.0,
+      "spin_direction": "clockwise viewed from above"
+    },
+    {
+      "id": 1,
+      "position_body_m": [-0.26, 0.0, 0.0],
+      "yaw_torque_sign": 1.0,
+      "spin_direction": "clockwise viewed from above"
+    },
+    {
+      "id": 2,
+      "position_body_m": [0.0, 0.26, 0.0],
+      "yaw_torque_sign": -1.0,
+      "spin_direction": "counter-clockwise viewed from above"
+    },
+    {
+      "id": 3,
+      "position_body_m": [0.0, -0.26, 0.0],
+      "yaw_torque_sign": -1.0,
+      "spin_direction": "counter-clockwise viewed from above"
+    }
+  ],
+  "propulsion": {
+    "layout": "plus",
+    "arm_length_m": 0.26,
+    "propeller_radius_m": 0.062,
+    "thrust_coefficient_N_per_rpm2": 8.98132e-09,
+    "moment_coefficient_Nm_per_rpm2": 1.169367864e-10,
+    "moment_coefficient_expression": "0.07 * (3 * propeller_radius_m) * thrust_coefficient_N_per_rpm2",
+    "motor_time_constant_s": 0.03333333333333333,
+    "minimum_rpm": 1200.0,
+    "maximum_rpm": 35000.0,
+    "mixer": {
+      "total_thrust_N": "kf * (w0^2 + w1^2 + w2^2 + w3^2)",
+      "roll_moment_Nm": "kf * arm * (w2^2 - w3^2)",
+      "pitch_moment_Nm": "kf * arm * (w1^2 - w0^2)",
+      "yaw_moment_Nm": "km * (w0^2 + w1^2 - w2^2 - w3^2)"
+    }
+  },
+  "aerodynamics": {
+    "quadratic_drag_force": "-quadratic_drag_coefficient * |velocity_world|^2 * unit(velocity_world)",
+    "quadratic_drag_coefficient": 0.021237166338267003,
+    "coefficient_expression": "0.1 * pi * arm_length_m^2",
+    "angular_drag": "not modeled upstream",
+    "ground_effect": "not modeled upstream",
+    "downwash": "not modeled by the upstream SO3 plant; RACER handles inter-UAV downwash as a planning separation cost"
+  },
+  "controller": {
+    "position_command_gain_kx": [5.7, 5.7, 6.2],
+    "velocity_command_gain_kv": [3.4, 3.4, 4.0],
+    "attitude_gain_kR_effective": [1.0, 1.0, 1.0],
+    "angular_rate_gain_kOmega_effective": [0.07, 0.07, 0.1],
+    "command_fields": [
+      "position",
+      "velocity",
+      "acceleration",
+      "yaw",
+      "yaw_rate"
+    ],
+    "note": "kR.z and kOmega.z are overridden by simulator.xml after gains_hummingbird.yaml is loaded"
+  },
+  "sensor": {
+    "type": "pinhole depth camera",
+    "width_px": 640,
+    "height_px": 480,
+    "fx_px": 387.229,
+    "fy_px": 387.229,
+    "cx_px": 321.046,
+    "cy_px": 243.449,
+    "mapping_fx_px": 385.69793701171875,
+    "mapping_fy_px": 385.69793701171875,
+    "mapping_cx_px": 324.0879821777344,
+    "mapping_cy_px": 239.10362243652344,
+    "nominal_horizontal_fov_deg": 79.1395913516086,
+    "nominal_vertical_fov_deg": 63.580300074532744,
+    "sensing_horizon_m": 5.0,
+    "depth_filter_min_range_m": 0.2,
+    "depth_filter_max_range_m": 4.6,
+    "mapping_min_ray_length_m": 0.5,
+    "mapping_max_ray_length_m": 4.5,
+    "depth_filter_margin_px": 2,
+    "mapping_skip_pixel": 2,
+    "original_simulator_rate_hz": 30.0
+  },
+  "simulation": {
+    "default_dynamics_rate_hz": 1000.0,
+    "default_odom_rate_hz": 100.0,
+    "racer_physical_launch_odom_rate_hz": 200.0,
+    "upstream_floor_model": "clamp z and downward velocity at z=0",
+    "isaac_floor_model": "use a PhysX ground plane and imported collision shapes"
+  },
+  "derived": {
+    "hover_rpm_per_motor": 16358.6500034936,
+    "hover_thrust_per_motor_N": 2.40345,
+    "maximum_thrust_per_motor_N": 11.002117,
+    "maximum_total_thrust_N": 44.008468,
+    "maximum_static_thrust_to_weight": 4.57763506625892,
+    "rotor_center_span_m": 0.52,
+    "visual_propeller_tip_span_m": 0.644
+  },
+  "inferred_geometry": {
+    "status": "not present in upstream RACER; do not use as measured hardware data",
+    "fuselage_size_m": [0.14, 0.12, 0.06],
+    "arm_cross_section_m": [0.025, 0.015],
+    "motor_radius_m": 0.02,
+    "motor_height_m": 0.036,
+    "collision_fuselage_size_m": [0.16, 0.14, 0.07],
+    "collision_arm_width_m": 0.03,
+    "collision_arm_height_m": 0.025,
+    "propeller_collision_enabled": false
+  }
+}

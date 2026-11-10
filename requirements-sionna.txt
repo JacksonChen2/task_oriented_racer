@@ -1,0 +1,5 @@
+# Install with the ROS Python ABI (Ubuntu 22.04/Humble: Python 3.10).
+sionna-rt==2.0.1
+mitsuba==3.8.0
+drjit==1.3.1
+numpy==2.2.6

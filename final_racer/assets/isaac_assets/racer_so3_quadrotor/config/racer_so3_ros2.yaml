@@ -1,0 +1,55 @@
+racer_so3_plant:
+  ros__parameters:
+    frame_id: world
+    child_frame_id: base_link
+    mass_kg: 0.98
+    gravity_m_s2: 9.81
+    inertia_diagonal_kg_m2: [0.00264, 0.00264, 0.00496]
+    arm_length_m: 0.26
+    propeller_radius_m: 0.062
+    thrust_coefficient_N_per_rpm2: 8.98132e-09
+    moment_coefficient_Nm_per_rpm2: 1.169367864e-10
+    motor_time_constant_s: 0.03333333333333333
+    minimum_rpm: 1200.0
+    maximum_rpm: 35000.0
+    dynamics_rate_hz: 1000.0
+    odometry_rate_hz: 200.0
+    quadratic_drag_coefficient: 0.021237166338267003
+
+racer_so3_controller:
+  ros__parameters:
+    position_gain: [5.7, 5.7, 6.2]
+    velocity_gain: [3.4, 3.4, 4.0]
+    attitude_gain: [1.0, 1.0, 1.0]
+    angular_rate_gain: [0.07, 0.07, 0.1]
+    command_rate_hz: 100.0
+
+racer_depth_camera:
+  ros__parameters:
+    frame_id: camera_optical_frame
+    translation_body_m: [0.0, 0.0, 0.0]
+    width: 640
+    height: 480
+    fx: 387.229
+    fy: 387.229
+    cx: 321.046
+    cy: 243.449
+    mapping_fx: 385.69793701171875
+    mapping_fy: 385.69793701171875
+    mapping_cx: 324.0879821777344
+    mapping_cy: 239.10362243652344
+    render_horizon_m: 5.0
+    depth_filter_min_range_m: 0.2
+    depth_filter_max_range_m: 4.6
+    mapping_min_ray_length_m: 0.5
+    mapping_max_ray_length_m: 4.5
+    image_border_margin_px: 2
+    mapper_skip_pixel: 2
+    isaac_point_cloud_ray_budget: 2400
+    generated_vehicle_self_filter_radius_m: 0.332
+    publish_rate_hz: 30.0
+
+racer_voxel_map:
+  ros__parameters:
+    resolution_m: 0.1
+    obstacle_inflation_m: 0.199

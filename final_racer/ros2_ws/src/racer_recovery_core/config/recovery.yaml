@@ -1,0 +1,13 @@
+/**:
+  ros__parameters:
+    recovery.enabled: true
+    recovery.ap_enabled: true
+    recovery.retry_backoff_s: 0.2
+    recovery.no_path_min_duration_s: 2.0
+    recovery.no_path_min_count: 20
+    recovery.minimum_progress_m: 0.25
+    recovery.escape_distance_m: 1.5
+    recovery.escape_clearance_m: 0.4
+    recovery.ap_wait_timeout_s: 5.0
+    recovery.status_period_s: 0.5
+    recovery.max_attempts: 3

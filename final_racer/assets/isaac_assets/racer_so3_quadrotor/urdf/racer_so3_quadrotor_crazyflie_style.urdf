@@ -1,0 +1,310 @@
+<?xml version="1.0"?>
+<!--
+  Crazyflie-inspired visual variant of the RACER SO3 quadrotor.
+
+  This remains the source-faithful RACER mathematical plant. The single-link
+  mass, inertia, plus-layout rotor centres and collision primitives are
+  identical to racer_so3_quadrotor.urdf. Only visual primitives differ.
+
+  Frame convention: ROS FLU body frame (+X forward, +Y left, +Z up).
+  Rotor layout: "+" configuration at (+X, -X, +Y, -Y) * 0.26 m.
+-->
+<robot name="racer_so3_quadrotor">
+  <material name="cf_carbon">
+    <color rgba="0.035 0.045 0.055 1.0"/>
+  </material>
+  <material name="cf_pcb_green">
+    <color rgba="0.025 0.24 0.11 1.0"/>
+  </material>
+  <material name="cf_pcb_dark">
+    <color rgba="0.035 0.085 0.065 1.0"/>
+  </material>
+  <material name="cf_chip">
+    <color rgba="0.055 0.060 0.070 1.0"/>
+  </material>
+  <material name="cf_battery">
+    <color rgba="0.70 0.73 0.76 1.0"/>
+  </material>
+  <material name="cf_battery_label">
+    <color rgba="0.08 0.30 0.74 1.0"/>
+  </material>
+  <material name="cf_motor_mount">
+    <color rgba="0.82 0.84 0.86 1.0"/>
+  </material>
+  <material name="cf_motor">
+    <color rgba="0.20 0.21 0.23 1.0"/>
+  </material>
+  <material name="cf_motor_cap">
+    <color rgba="0.55 0.57 0.60 1.0"/>
+  </material>
+  <material name="cf_propeller_cw">
+    <color rgba="0.10 0.12 0.14 0.82"/>
+  </material>
+  <material name="cf_propeller_ccw">
+    <color rgba="0.22 0.25 0.29 0.82"/>
+  </material>
+  <material name="cf_hub">
+    <color rgba="0.75 0.77 0.80 1.0"/>
+  </material>
+  <material name="cf_camera">
+    <color rgba="0.025 0.027 0.030 1.0"/>
+  </material>
+  <material name="cf_lens">
+    <color rgba="0.035 0.10 0.17 1.0"/>
+  </material>
+  <material name="cf_front_led">
+    <color rgba="1.0 0.18 0.03 1.0"/>
+  </material>
+  <material name="cf_rear_led">
+    <color rgba="0.05 1.0 0.22 1.0"/>
+  </material>
+  <material name="cf_pin_gold">
+    <color rgba="0.82 0.58 0.10 1.0"/>
+  </material>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.98"/>
+      <inertia
+        ixx="0.00264" ixy="0.0" ixz="0.0"
+        iyy="0.00264" iyz="0.0"
+        izz="0.00496"/>
+    </inertial>
+
+    <!-- Layered PCB, battery and electronics reproduce the Crazyflie silhouette. -->
+    <visual name="pcb_lower">
+      <origin xyz="0 0 0.002" rpy="0 0 0"/>
+      <geometry><box size="0.140 0.120 0.006"/></geometry>
+      <material name="cf_pcb_green"/>
+    </visual>
+    <visual name="pcb_upper">
+      <origin xyz="0 0 0.025" rpy="0 0 0"/>
+      <geometry><box size="0.112 0.092 0.006"/></geometry>
+      <material name="cf_pcb_dark"/>
+    </visual>
+    <visual name="battery">
+      <origin xyz="-0.006 0 -0.018" rpy="0 0 0"/>
+      <geometry><box size="0.104 0.058 0.028"/></geometry>
+      <material name="cf_battery"/>
+    </visual>
+    <visual name="battery_label">
+      <origin xyz="-0.006 0 -0.033" rpy="0 0 0"/>
+      <geometry><box size="0.075 0.040 0.002"/></geometry>
+      <material name="cf_battery_label"/>
+    </visual>
+    <visual name="flight_controller_chip">
+      <origin xyz="0.006 0.004 0.031" rpy="0 0 0"/>
+      <geometry><box size="0.030 0.026 0.006"/></geometry>
+      <material name="cf_chip"/>
+    </visual>
+    <visual name="radio_deck">
+      <origin xyz="-0.026 0 0.035" rpy="0 0 0"/>
+      <geometry><box size="0.032 0.058 0.005"/></geometry>
+      <material name="cf_pcb_green"/>
+    </visual>
+    <visual name="pin_rack_left">
+      <origin xyz="-0.005 0.035 0.036" rpy="0 0 0"/>
+      <geometry><box size="0.052 0.005 0.012"/></geometry>
+      <material name="cf_pin_gold"/>
+    </visual>
+    <visual name="pin_rack_right">
+      <origin xyz="-0.005 -0.035 0.036" rpy="0 0 0"/>
+      <geometry><box size="0.052 0.005 0.012"/></geometry>
+      <material name="cf_pin_gold"/>
+    </visual>
+
+    <!-- Visual camera housing; the source optical frame remains at the origin. -->
+    <visual name="camera_housing">
+      <origin xyz="0.070 0 0.021" rpy="0 0 0"/>
+      <geometry><box size="0.026 0.046 0.028"/></geometry>
+      <material name="cf_camera"/>
+    </visual>
+    <visual name="camera_lens">
+      <origin xyz="0.085 0 0.021" rpy="0 1.57079632679 0"/>
+      <geometry><cylinder radius="0.009" length="0.008"/></geometry>
+      <material name="cf_lens"/>
+    </visual>
+
+    <!-- Four individual tapered-looking arms, represented by portable boxes. -->
+    <visual name="arm_front">
+      <origin xyz="0.1625 0 0.001" rpy="0 0 0"/>
+      <geometry><box size="0.205 0.022 0.010"/></geometry>
+      <material name="cf_carbon"/>
+    </visual>
+    <visual name="arm_rear">
+      <origin xyz="-0.1625 0 0.001" rpy="0 0 0"/>
+      <geometry><box size="0.205 0.022 0.010"/></geometry>
+      <material name="cf_carbon"/>
+    </visual>
+    <visual name="arm_left">
+      <origin xyz="0 0.1625 0.001" rpy="0 0 0"/>
+      <geometry><box size="0.022 0.205 0.010"/></geometry>
+      <material name="cf_carbon"/>
+    </visual>
+    <visual name="arm_right">
+      <origin xyz="0 -0.1625 0.001" rpy="0 0 0"/>
+      <geometry><box size="0.022 0.205 0.010"/></geometry>
+      <material name="cf_carbon"/>
+    </visual>
+
+    <!-- Crazyflie-like motor baskets. Rotor centres remain source-faithful. -->
+    <visual name="motor_mount_0">
+      <origin xyz="0.26 0 0.000" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.031" length="0.012"/></geometry>
+      <material name="cf_motor_mount"/>
+    </visual>
+    <visual name="motor_mount_1">
+      <origin xyz="-0.26 0 0.000" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.031" length="0.012"/></geometry>
+      <material name="cf_motor_mount"/>
+    </visual>
+    <visual name="motor_mount_2">
+      <origin xyz="0 0.26 0.000" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.031" length="0.012"/></geometry>
+      <material name="cf_motor_mount"/>
+    </visual>
+    <visual name="motor_mount_3">
+      <origin xyz="0 -0.26 0.000" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.031" length="0.012"/></geometry>
+      <material name="cf_motor_mount"/>
+    </visual>
+
+    <visual name="motor_0">
+      <origin xyz="0.26 0 0.021" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.020" length="0.036"/></geometry>
+      <material name="cf_motor"/>
+    </visual>
+    <visual name="motor_1">
+      <origin xyz="-0.26 0 0.021" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.020" length="0.036"/></geometry>
+      <material name="cf_motor"/>
+    </visual>
+    <visual name="motor_2">
+      <origin xyz="0 0.26 0.021" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.020" length="0.036"/></geometry>
+      <material name="cf_motor"/>
+    </visual>
+    <visual name="motor_3">
+      <origin xyz="0 -0.26 0.021" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.020" length="0.036"/></geometry>
+      <material name="cf_motor"/>
+    </visual>
+
+    <visual name="motor_cap_0">
+      <origin xyz="0.26 0 0.041" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.013" length="0.006"/></geometry>
+      <material name="cf_motor_cap"/>
+    </visual>
+    <visual name="motor_cap_1">
+      <origin xyz="-0.26 0 0.041" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.013" length="0.006"/></geometry>
+      <material name="cf_motor_cap"/>
+    </visual>
+    <visual name="motor_cap_2">
+      <origin xyz="0 0.26 0.041" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.013" length="0.006"/></geometry>
+      <material name="cf_motor_cap"/>
+    </visual>
+    <visual name="motor_cap_3">
+      <origin xyz="0 -0.26 0.041" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.013" length="0.006"/></geometry>
+      <material name="cf_motor_cap"/>
+    </visual>
+
+    <!-- Thin two-blade propellers replace the old solid discs. -->
+    <visual name="propeller_blade_0">
+      <origin xyz="0.26 0 0.047" rpy="0 0 0.78539816339"/>
+      <geometry><box size="0.124 0.012 0.002"/></geometry>
+      <material name="cf_propeller_ccw"/>
+    </visual>
+    <visual name="propeller_blade_1">
+      <origin xyz="-0.26 0 0.047" rpy="0 0 0.78539816339"/>
+      <geometry><box size="0.124 0.012 0.002"/></geometry>
+      <material name="cf_propeller_ccw"/>
+    </visual>
+    <visual name="propeller_blade_2">
+      <origin xyz="0 0.26 0.047" rpy="0 0 -0.78539816339"/>
+      <geometry><box size="0.124 0.012 0.002"/></geometry>
+      <material name="cf_propeller_cw"/>
+    </visual>
+    <visual name="propeller_blade_3">
+      <origin xyz="0 -0.26 0.047" rpy="0 0 -0.78539816339"/>
+      <geometry><box size="0.124 0.012 0.002"/></geometry>
+      <material name="cf_propeller_cw"/>
+    </visual>
+
+    <visual name="propeller_hub_0">
+      <origin xyz="0.26 0 0.048" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.008" length="0.005"/></geometry>
+      <material name="cf_hub"/>
+    </visual>
+    <visual name="propeller_hub_1">
+      <origin xyz="-0.26 0 0.048" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.008" length="0.005"/></geometry>
+      <material name="cf_hub"/>
+    </visual>
+    <visual name="propeller_hub_2">
+      <origin xyz="0 0.26 0.048" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.008" length="0.005"/></geometry>
+      <material name="cf_hub"/>
+    </visual>
+    <visual name="propeller_hub_3">
+      <origin xyz="0 -0.26 0.048" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.008" length="0.005"/></geometry>
+      <material name="cf_hub"/>
+    </visual>
+
+    <!-- LEDs make the +X nose and -X tail unambiguous. -->
+    <visual name="front_led_left">
+      <origin xyz="0.071 0.044 0.030" rpy="0 0 0"/>
+      <geometry><sphere radius="0.006"/></geometry>
+      <material name="cf_front_led"/>
+    </visual>
+    <visual name="front_led_right">
+      <origin xyz="0.071 -0.044 0.030" rpy="0 0 0"/>
+      <geometry><sphere radius="0.006"/></geometry>
+      <material name="cf_front_led"/>
+    </visual>
+    <visual name="rear_led_left">
+      <origin xyz="-0.058 0.042 0.027" rpy="0 0 0"/>
+      <geometry><sphere radius="0.006"/></geometry>
+      <material name="cf_rear_led"/>
+    </visual>
+    <visual name="rear_led_right">
+      <origin xyz="-0.058 -0.042 0.027" rpy="0 0 0"/>
+      <geometry><sphere radius="0.006"/></geometry>
+      <material name="cf_rear_led"/>
+    </visual>
+
+    <!-- Collision primitive dimensions and poses match the original variant. -->
+    <collision name="fuselage_collision">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><box size="0.16 0.14 0.07"/></geometry>
+    </collision>
+    <collision name="arm_x_collision">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><box size="0.54 0.03 0.025"/></geometry>
+    </collision>
+    <collision name="arm_y_collision">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><box size="0.03 0.54 0.025"/></geometry>
+    </collision>
+    <collision name="motor_0_collision">
+      <origin xyz="0.26 0 0.018" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.024" length="0.040"/></geometry>
+    </collision>
+    <collision name="motor_1_collision">
+      <origin xyz="-0.26 0 0.018" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.024" length="0.040"/></geometry>
+    </collision>
+    <collision name="motor_2_collision">
+      <origin xyz="0 0.26 0.018" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.024" length="0.040"/></geometry>
+    </collision>
+    <collision name="motor_3_collision">
+      <origin xyz="0 -0.26 0.018" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.024" length="0.040"/></geometry>
+    </collision>
+  </link>
+</robot>

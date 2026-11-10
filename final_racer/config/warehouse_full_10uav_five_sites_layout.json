@@ -1,0 +1,80 @@
+{
+  "scene": "../../warehouse_scenes/isaac/warehouse_full_with_industrial_ap.usda",
+  "scene_sha256": "e23ed69250e6ff0391faf21e12715ac65bed0f28eab7afed80c9b5315d191c1e",
+  "layout": "five_requested_sites_two_collision_checked_uavs_each",
+  "selection_rule": "0.55 m clear start box; 0.40 m clear vertical takeoff corridor through z=2.75 m; at least three clear cardinal exits; 1.50-2.50 m within-site spacing; pair midpoint nearest requested center; site 3 constrained to one vertical aisle",
+  "validation_source": "../experiments/layout_update_10uav_five_sites_20260831/physx_selected_layout.json",
+  "drone_count": 10,
+  "start_height_m": 0.75,
+  "minimum_global_spacing_m": 1.5,
+  "regions": [
+    {
+      "name": "site_1_northwest",
+      "requested_center_xy_m": [-20.0, 26.0],
+      "selected_midpoint_xy_m": [-20.0, 26.0],
+      "midpoint_offset_m": 0.0,
+      "pair_spacing_m": 1.5,
+      "uavs": [
+        {"position": [-20.75, 26.0, 0.75], "distance_to_requested_center_m": 0.75, "clear_cardinal_exits": 3, "start_box_clear": true, "vertical_takeoff_corridor_clear": true},
+        {"position": [-19.25, 26.0, 0.75], "distance_to_requested_center_m": 0.75, "clear_cardinal_exits": 4, "start_box_clear": true, "vertical_takeoff_corridor_clear": true}
+      ]
+    },
+    {
+      "name": "site_2_southwest",
+      "requested_center_xy_m": [-18.0, 5.0],
+      "selected_midpoint_xy_m": [-18.0, 5.0],
+      "midpoint_offset_m": 0.0,
+      "pair_spacing_m": 1.5,
+      "uavs": [
+        {"position": [-18.75, 5.0, 0.75], "distance_to_requested_center_m": 0.75, "clear_cardinal_exits": 4, "start_box_clear": true, "vertical_takeoff_corridor_clear": true},
+        {"position": [-17.25, 5.0, 0.75], "distance_to_requested_center_m": 0.75, "clear_cardinal_exits": 4, "start_box_clear": true, "vertical_takeoff_corridor_clear": true}
+      ]
+    },
+    {
+      "name": "site_3_center",
+      "requested_center_xy_m": [-11.0, 15.0],
+      "selected_midpoint_xy_m": [-11.75, 15.0],
+      "midpoint_offset_m": 0.75,
+      "pair_spacing_m": 1.5,
+      "aisle_constraint": {"orientation": "vertical", "x_max": -11.5, "maximum_cross_aisle_offset_m": 0.25},
+      "uavs": [
+        {"position": [-11.75, 14.25, 0.75], "distance_to_requested_center_m": 1.0606601717798212, "clear_cardinal_exits": 3, "start_box_clear": true, "vertical_takeoff_corridor_clear": true},
+        {"position": [-11.75, 15.75, 0.75], "distance_to_requested_center_m": 1.0606601717798212, "clear_cardinal_exits": 3, "start_box_clear": true, "vertical_takeoff_corridor_clear": true}
+      ]
+    },
+    {
+      "name": "site_4_northeast",
+      "requested_center_xy_m": [0.0, 27.0],
+      "selected_midpoint_xy_m": [0.0, 27.0],
+      "midpoint_offset_m": 0.0,
+      "pair_spacing_m": 1.5,
+      "uavs": [
+        {"position": [-0.75, 27.0, 0.75], "distance_to_requested_center_m": 0.75, "clear_cardinal_exits": 4, "start_box_clear": true, "vertical_takeoff_corridor_clear": true},
+        {"position": [0.75, 27.0, 0.75], "distance_to_requested_center_m": 0.75, "clear_cardinal_exits": 4, "start_box_clear": true, "vertical_takeoff_corridor_clear": true}
+      ]
+    },
+    {
+      "name": "site_5_southeast",
+      "requested_center_xy_m": [-3.0, 5.0],
+      "selected_midpoint_xy_m": [-3.0, 5.0],
+      "midpoint_offset_m": 0.0,
+      "pair_spacing_m": 1.5,
+      "uavs": [
+        {"position": [-3.75, 5.0, 0.75], "distance_to_requested_center_m": 0.75, "clear_cardinal_exits": 4, "start_box_clear": true, "vertical_takeoff_corridor_clear": true},
+        {"position": [-2.25, 5.0, 0.75], "distance_to_requested_center_m": 0.75, "clear_cardinal_exits": 4, "start_box_clear": true, "vertical_takeoff_corridor_clear": true}
+      ]
+    }
+  ],
+  "start_positions": [
+    [-20.75, 26.0, 0.75],
+    [-19.25, 26.0, 0.75],
+    [-18.75, 5.0, 0.75],
+    [-17.25, 5.0, 0.75],
+    [-11.75, 14.25, 0.75],
+    [-11.75, 15.75, 0.75],
+    [-0.75, 27.0, 0.75],
+    [0.75, 27.0, 0.75],
+    [-3.75, 5.0, 0.75],
+    [-2.25, 5.0, 0.75]
+  ]
+}

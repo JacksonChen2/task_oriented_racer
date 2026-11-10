@@ -1,0 +1,27 @@
+uint8 TASK_WAITING=0
+uint8 TASK_ACTIVE=1
+uint8 TASK_HELP=2
+uint8 TASK_FINISHED=3
+
+int32 drone_id
+float64 stamp
+uint8 task_status
+float32[] position
+int32[] active_grid_ids
+int32[] assigned_grid_ids
+bool has_target
+int32 primary_grid_id
+float32[] current_target
+float64 target_utility
+float64 estimated_information_gain
+float64 estimated_travel_time
+float64 overlap_penalty
+float64 adaptive_distance_limit
+bool requesting_reassignment
+int32 failed_grid_id
+uint64 failure_sequence
+uint64 reassignment_count
+uint64 help_mode_count
+uint64 takeover_count
+float64 idle_time
+float64 coverage_contribution

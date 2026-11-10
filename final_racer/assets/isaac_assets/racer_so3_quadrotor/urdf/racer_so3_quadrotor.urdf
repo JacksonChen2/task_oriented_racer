@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+<!--
+  RACER SO3 quadrotor model for Isaac Sim.
+
+  Exact dynamics copied from:
+    uav_simulator/so3_quadrotor_simulator/src/dynamics/Quadrotor.cpp
+
+  The upstream simulator is a mathematical rigid-body model and does not
+  contain CAD, a URDF, or collision geometry.  The mass and inertia below are
+  source-faithful.  Body, arm, motor, and collision dimensions are documented
+  approximations chosen only to make the rigid body visible and collidable.
+
+  Frame convention: ROS FLU body frame (+X forward, +Y left, +Z up).
+  Rotor layout: "+" configuration with rotor centers 0.26 m from the origin.
+-->
+<robot name="racer_so3_quadrotor">
+  <material name="carbon">
+    <color rgba="0.055 0.065 0.075 1.0"/>
+  </material>
+  <material name="body_blue">
+    <color rgba="0.05 0.22 0.72 1.0"/>
+  </material>
+  <material name="motor_dark">
+    <color rgba="0.12 0.12 0.14 1.0"/>
+  </material>
+  <material name="rotor_yaw_positive">
+    <color rgba="0.15 0.75 1.0 0.42"/>
+  </material>
+  <material name="rotor_yaw_negative">
+    <color rgba="1.0 0.38 0.10 0.42"/>
+  </material>
+  <material name="forward_marker">
+    <color rgba="1.0 0.82 0.05 1.0"/>
+  </material>
+
+  <!--
+    A single rigid link preserves the upstream lumped mass and inertia exactly.
+    Propellers are visual-only because URDF cannot encode thrust coefficients,
+    rotor drag torque, or the upstream first-order motor state.
+  -->
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.98"/>
+      <inertia
+        ixx="0.00264" ixy="0.0" ixz="0.0"
+        iyy="0.00264" iyz="0.0"
+        izz="0.00496"/>
+    </inertial>
+
+    <!-- Inferred central fuselage. -->
+    <visual name="fuselage">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.14 0.12 0.06"/>
+      </geometry>
+      <material name="body_blue"/>
+    </visual>
+
+    <!-- Inferred full-span "+" arms. -->
+    <visual name="arm_x">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.52 0.025 0.015"/>
+      </geometry>
+      <material name="carbon"/>
+    </visual>
+    <visual name="arm_y">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.025 0.52 0.015"/>
+      </geometry>
+      <material name="carbon"/>
+    </visual>
+
+    <!-- +X is visibly marked as the vehicle nose. -->
+    <visual name="nose_marker">
+      <origin xyz="0.077 0 0.021" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.018 0.06 0.012"/>
+      </geometry>
+      <material name="forward_marker"/>
+    </visual>
+
+    <!-- Inferred motor cans at source-faithful rotor centers. -->
+    <visual name="motor_0">
+      <origin xyz="0.26 0 0.018" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.020" length="0.036"/>
+      </geometry>
+      <material name="motor_dark"/>
+    </visual>
+    <visual name="motor_1">
+      <origin xyz="-0.26 0 0.018" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.020" length="0.036"/>
+      </geometry>
+      <material name="motor_dark"/>
+    </visual>
+    <visual name="motor_2">
+      <origin xyz="0 0.26 0.018" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.020" length="0.036"/>
+      </geometry>
+      <material name="motor_dark"/>
+    </visual>
+    <visual name="motor_3">
+      <origin xyz="0 -0.26 0.018" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.020" length="0.036"/>
+      </geometry>
+      <material name="motor_dark"/>
+    </visual>
+
+    <!-- Source-faithful 0.062 m propeller radius; visual-only thin discs. -->
+    <visual name="propeller_0">
+      <origin xyz="0.26 0 0.040" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.062" length="0.002"/>
+      </geometry>
+      <material name="rotor_yaw_positive"/>
+    </visual>
+    <visual name="propeller_1">
+      <origin xyz="-0.26 0 0.040" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.062" length="0.002"/>
+      </geometry>
+      <material name="rotor_yaw_positive"/>
+    </visual>
+    <visual name="propeller_2">
+      <origin xyz="0 0.26 0.040" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.062" length="0.002"/>
+      </geometry>
+      <material name="rotor_yaw_negative"/>
+    </visual>
+    <visual name="propeller_3">
+      <origin xyz="0 -0.26 0.040" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.062" length="0.002"/>
+      </geometry>
+      <material name="rotor_yaw_negative"/>
+    </visual>
+
+    <!--
+      Inferred conservative collision geometry.  Propeller discs are excluded
+      to avoid unstable contacts with thin, fast-spinning geometry.  If rotor
+      envelope collision is required, use a separate safety volume.
+    -->
+    <collision name="fuselage_collision">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.16 0.14 0.07"/>
+      </geometry>
+    </collision>
+    <collision name="arm_x_collision">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.54 0.03 0.025"/>
+      </geometry>
+    </collision>
+    <collision name="arm_y_collision">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.03 0.54 0.025"/>
+      </geometry>
+    </collision>
+    <collision name="motor_0_collision">
+      <origin xyz="0.26 0 0.018" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.024" length="0.040"/>
+      </geometry>
+    </collision>
+    <collision name="motor_1_collision">
+      <origin xyz="-0.26 0 0.018" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.024" length="0.040"/>
+      </geometry>
+    </collision>
+    <collision name="motor_2_collision">
+      <origin xyz="0 0.26 0.018" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.024" length="0.040"/>
+      </geometry>
+    </collision>
+    <collision name="motor_3_collision">
+      <origin xyz="0 -0.26 0.018" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.024" length="0.040"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>

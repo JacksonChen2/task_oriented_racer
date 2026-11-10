@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>racer_sionna_comm</name>
+  <version>0.1.0</version>
+  <description>Sionna RT wireless boundary for the source-faithful ROS2/Isaac RACER port.</description>
+  <maintainer email="maintainer@example.com">RACER fidelity port</maintainer>
+  <license>BSD-3-Clause</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <build_depend>ament_cmake_gtest</build_depend>
+  <build_depend>ament_cmake_pytest</build_depend>
+  <depend>rclcpp</depend>
+  <depend>nav_msgs</depend>
+  <depend>racer_fidelity_msgs</depend>
+  <depend>racer_recovery_core</depend>
+  <depend>racer_sionna_interfaces</depend>
+  <exec_depend>std_msgs</exec_depend>
+  <test_depend>ament_cmake_gtest</test_depend>
+  <test_depend>ament_cmake_pytest</test_depend>
+  <test_depend>python3-pytest</test_depend>
+  <test_depend>rclpy</test_depend>
+  <export><build_type>ament_cmake</build_type></export>
+</package>

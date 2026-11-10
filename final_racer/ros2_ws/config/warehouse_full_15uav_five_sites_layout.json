@@ -1,0 +1,376 @@
+{
+  "scene": "/home/jiazheng/RACER_warehouse_loaded_portable_20260805/racer_chen/warehouse_scenes/isaac/warehouse_full_with_industrial_ap.usda",
+  "layout": "five_regions_three_collision_checked_uavs_each",
+  "selection_rule": "0.55 m clear start box; 0.40 m clear vertical takeoff corridor through z=2.75 m; at least three clear cardinal exits; 1.50-3.25 m within-site spacing",
+  "drone_count": 15,
+  "minimum_global_spacing_m": 1.5,
+  "regions": [
+    {
+      "name": "southwest",
+      "anchor_xy_m": [
+        -26.0,
+        1.3
+      ],
+      "search_bounds_xy_m": {
+        "x": [
+          -21.0,
+          -18.0
+        ],
+        "y": [
+          3.5,
+          7.5
+        ]
+      },
+      "candidate_count": 120,
+      "score": [
+        7.244998274671983,
+        20.04354249225342,
+        0.6213203435596424,
+        -3
+      ],
+      "pairwise_spacing_m": [
+        1.5,
+        1.5,
+        2.1213203435596424
+      ],
+      "uavs": [
+        {
+          "position": [
+            -21.0,
+            4.5,
+            0.75
+          ],
+          "distance_to_anchor_m": 5.936328831862332,
+          "clear_cardinal_exits": 3
+        },
+        {
+          "position": [
+            -21.0,
+            6.0,
+            0.75
+          ],
+          "distance_to_anchor_m": 6.862215385719105,
+          "clear_cardinal_exits": 4
+        },
+        {
+          "position": [
+            -19.5,
+            4.5,
+            0.75
+          ],
+          "distance_to_anchor_m": 7.244998274671983,
+          "clear_cardinal_exits": 3
+        }
+      ]
+    },
+    {
+      "name": "southeast",
+      "anchor_xy_m": [
+        5.0,
+        1.3
+      ],
+      "search_bounds_xy_m": {
+        "x": [
+          -3.0,
+          0.0
+        ],
+        "y": [
+          7.0,
+          9.0
+        ]
+      },
+      "candidate_count": 69,
+      "score": [
+        9.42019108086455,
+        26.1649668017981,
+        0.8992189406417879,
+        -3
+      ],
+      "pairwise_spacing_m": [
+        1.6007810593582121,
+        2.5,
+        1.6007810593582121
+      ],
+      "uavs": [
+        {
+          "position": [
+            0.0,
+            7.0,
+            0.75
+          ],
+          "distance_to_anchor_m": 7.582216034906946,
+          "clear_cardinal_exits": 4
+        },
+        {
+          "position": [
+            -1.25,
+            8.0,
+            0.75
+          ],
+          "distance_to_anchor_m": 9.162559686026608,
+          "clear_cardinal_exits": 3
+        },
+        {
+          "position": [
+            -2.5,
+            7.0,
+            0.75
+          ],
+          "distance_to_anchor_m": 9.42019108086455,
+          "clear_cardinal_exits": 4
+        }
+      ]
+    },
+    {
+      "name": "northwest",
+      "anchor_xy_m": [
+        -26.0,
+        29.8
+      ],
+      "search_bounds_xy_m": {
+        "x": [
+          -25.5,
+          -21.0
+        ],
+        "y": [
+          24.0,
+          28.5
+        ]
+      },
+      "candidate_count": 120,
+      "score": [
+        2.844292530665579,
+        6.622503446759305,
+        0.6213203435596424,
+        -3
+      ],
+      "pairwise_spacing_m": [
+        1.5,
+        1.5,
+        2.1213203435596424
+      ],
+      "uavs": [
+        {
+          "position": [
+            -25.5,
+            28.5,
+            0.75
+          ],
+          "distance_to_anchor_m": 1.3928388277184125,
+          "clear_cardinal_exits": 3
+        },
+        {
+          "position": [
+            -24.0,
+            28.5,
+            0.75
+          ],
+          "distance_to_anchor_m": 2.385372088375313,
+          "clear_cardinal_exits": 4
+        },
+        {
+          "position": [
+            -25.5,
+            27.0,
+            0.75
+          ],
+          "distance_to_anchor_m": 2.844292530665579,
+          "clear_cardinal_exits": 3
+        }
+      ]
+    },
+    {
+      "name": "northeast",
+      "anchor_xy_m": [
+        5.0,
+        29.8
+      ],
+      "search_bounds_xy_m": {
+        "x": [
+          0.0,
+          4.0
+        ],
+        "y": [
+          24.5,
+          29.0
+        ]
+      },
+      "candidate_count": 120,
+      "score": [
+        2.6248809496813377,
+        6.413493037964799,
+        0.6213203435596424,
+        -3
+      ],
+      "pairwise_spacing_m": [
+        1.5,
+        1.5,
+        2.1213203435596424
+      ],
+      "uavs": [
+        {
+          "position": [
+            4.0,
+            29.0,
+            0.75
+          ],
+          "distance_to_anchor_m": 1.2806248474865702,
+          "clear_cardinal_exits": 4
+        },
+        {
+          "position": [
+            4.0,
+            27.5,
+            0.75
+          ],
+          "distance_to_anchor_m": 2.5079872407968913,
+          "clear_cardinal_exits": 3
+        },
+        {
+          "position": [
+            2.5,
+            29.0,
+            0.75
+          ],
+          "distance_to_anchor_m": 2.6248809496813377,
+          "clear_cardinal_exits": 4
+        }
+      ]
+    },
+    {
+      "name": "center",
+      "anchor_xy_m": [
+        -10.02891489217081,
+        14.888611215255622
+      ],
+      "search_bounds_xy_m": {
+        "x": [
+          -12.0,
+          -7.5
+        ],
+        "y": [
+          12.5,
+          17.5
+        ]
+      },
+      "candidate_count": 120,
+      "score": [
+        1.7246858872728803,
+        4.073811449224266,
+        1.32974793017329,
+        -3
+      ],
+      "pairwise_spacing_m": [
+        1.5206906325745548,
+        2.6100766272276377,
+        2.850438562747845
+      ],
+      "uavs": [
+        {
+          "position": [
+            -9.25,
+            14.25,
+            0.75
+          ],
+          "distance_to_anchor_m": 1.007240136956291,
+          "clear_cardinal_exits": 3
+        },
+        {
+          "position": [
+            -9.0,
+            15.75,
+            0.75
+          ],
+          "distance_to_anchor_m": 1.3418854249950949,
+          "clear_cardinal_exits": 3
+        },
+        {
+          "position": [
+            -11.75,
+            15.0,
+            0.75
+          ],
+          "distance_to_anchor_m": 1.7246858872728803,
+          "clear_cardinal_exits": 3
+        }
+      ]
+    }
+  ],
+  "start_positions": [
+    [
+      -21.0,
+      4.5,
+      0.75
+    ],
+    [
+      -21.0,
+      6.0,
+      0.75
+    ],
+    [
+      -19.5,
+      4.5,
+      0.75
+    ],
+    [
+      0.0,
+      7.0,
+      0.75
+    ],
+    [
+      -1.25,
+      8.0,
+      0.75
+    ],
+    [
+      -2.5,
+      7.0,
+      0.75
+    ],
+    [
+      -25.5,
+      28.5,
+      0.75
+    ],
+    [
+      -24.0,
+      28.5,
+      0.75
+    ],
+    [
+      -25.5,
+      27.0,
+      0.75
+    ],
+    [
+      4.0,
+      29.0,
+      0.75
+    ],
+    [
+      4.0,
+      27.5,
+      0.75
+    ],
+    [
+      2.5,
+      29.0,
+      0.75
+    ],
+    [
+      -9.25,
+      14.25,
+      0.75
+    ],
+    [
+      -9.0,
+      15.75,
+      0.75
+    ],
+    [
+      -11.75,
+      15.0,
+      0.75
+    ]
+  ]
+}

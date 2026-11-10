@@ -1,0 +1,17 @@
+{
+  "status": "ok",
+  "isaac_imported_root": "/racer_so3_quadrotor",
+  "rigid_body_prim": "/racer_so3_quadrotor/base_link",
+  "usd": "racer_so3_quadrotor_crazyflie_style.usd",
+  "flattened_usd": "racer_so3_quadrotor_crazyflie_style_flattened.usd",
+  "mass_kg": 0.9800000190734863,
+  "diagonal_inertia_kg_m2": [
+    0.0026400000788271427,
+    0.0026400000788271427,
+    0.0049600000493228436
+  ],
+  "fixed_base": false,
+  "distance_scale": 1.0,
+  "source_geometry": "primitive URDF geometry; no external meshes",
+  "normalized_cube_extents": 20
+}

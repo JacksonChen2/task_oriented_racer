@@ -1,0 +1,229 @@
+/**:
+  ros__parameters:
+    use_sim_time: true
+
+    sdf_map.resolution: 0.1
+    sdf_map.map_size_x: 22.0
+    sdf_map.map_size_y: 36.0
+    sdf_map.map_size_z: 9.0
+    sdf_map.obstacles_inflation: 0.199
+    sdf_map.local_bound_inflate: 0.5
+    sdf_map.local_map_margin: 50
+    sdf_map.ground_height: 0.0
+    sdf_map.default_dist: 0.5
+    sdf_map.p_hit: 0.65
+    sdf_map.p_miss: 0.35
+    sdf_map.p_min: 0.12
+    sdf_map.p_max: 0.90
+    sdf_map.p_occ: 0.80
+    sdf_map.min_ray_length: 0.5
+    sdf_map.max_ray_length: 4.5
+    # Isaac reports wall/floor/ceiling collision faces, while the ROS1
+    # benchmark treated the planned position as a point.  Restrict the map
+    # box to collision-free *vehicle-centre* coordinates for the 0.332 m
+    # crazyflie_with_racer_dynamics rotor envelope.  This is a Warehouse
+    # frame/footprint calibration; the original map, frontier, HGrid and
+    # trajectory algorithms below are unchanged.
+    sdf_map.virtual_ceil_height: 8.6
+    sdf_map.optimistic: true
+    sdf_map.signed_dist: false
+    sdf_map.box_min_x: -10.0
+    sdf_map.box_min_y: -11.9
+    sdf_map.box_min_z: 0.4
+    sdf_map.box_max_x: 9.0
+    sdf_map.box_max_y: 17.6
+    sdf_map.box_max_z: 8.6
+    sdf_map.no_drone_1: false
+
+    map_ros.cx: 324.0879821777344
+    map_ros.cy: 239.10362243652344
+    map_ros.fx: 385.69793701171875
+    map_ros.fy: 385.69793701171875
+    map_ros.depth_filter_maxdist: 4.6
+    map_ros.depth_filter_mindist: 0.2
+    map_ros.depth_filter_margin: 2
+    map_ros.k_depth_scaling_factor: 1000.0
+    map_ros.skip_pixel: 2
+    map_ros.esdf_slice_height: 0.5
+    map_ros.visualization_truncate_height: 10.09
+    map_ros.visualization_truncate_low: -2.0
+    map_ros.show_occ_time: false
+    map_ros.show_esdf_time: false
+    map_ros.show_all_map: true
+    map_ros.frame_id: world
+    # Cache the collision-monitored physical trail while exploring, but expose
+    # its known-free tube to the local SDFMap only after the unchanged FSM has
+    # selected return-to-start.  Exploration frontiers and swarm map chunks
+    # therefore never see this return-only sensor boundary.
+    map_ros.traversed_clearance_radius: 0.30
+    # Read-only acceptance metric. It scans the original occupancy buffer but
+    # never writes the map or feeds a value back into planning.
+    map_ros.coverage_diagnostic_period: 2.0
+
+    fsm.thresh_replan1: 0.2
+    fsm.thresh_replan2: 0.2
+    fsm.thresh_replan3: 1.5
+    fsm.replan_time: 0.2
+    fsm.sync_interval: 0.2
+    fsm.wait_delete_duration: 0.05
+    fsm.gain_thresh: 10
+    # Robust pairwise allocation: rejected computations enter cooldown, accepted changes use a
+    # versioned prepare/commit transaction, and healthy assignments retain a short commitment.
+    fsm.attempt_interval: 0.5
+    fsm.pair_opt_interval: 2.0
+    fsm.repeat_send_num: 1
+    fsm.pair_transaction_timeout: 1.5
+    fsm.pair_retry_interval: 0.15
+    fsm.assignment_commitment_duration: 3.0
+    fsm.pair_min_improvement: 1.0
+    fsm.pair_switch_penalty: 1.5
+    fsm.swarm_state_freshness: 0.5
+    fsm.work_steal_failure_threshold: 5
+    fsm.work_steal_idle_delay: 0.5
+    # Pairwise allocation is the normal startup path. GlobalGridAssignment is
+    # reserved for recovery after repeated empty-task pair-search cycles.
+    fsm.initial_partition_enabled: false
+    fsm.initial_partition_interval: 0.5
+    fsm.initial_partition_balance_weight: 2.0
+    fsm.global_recovery_pair_fail_threshold: 4
+    fsm.global_recovery_cooldown_cycles: 5
+    fsm.global_recovery_coalesce_cycles: 2
+    fsm.global_recovery_max_tasks_per_idle: 1
+    fsm.global_finish_confirmation_cycles: 3
+    fsm.bs_event_global_retry_interval: 0.5
+    fsm.bs_event_global_state_freshness: 2.0
+    # Used only by exploration_assignment_mode=local_component.  Neighbor
+    # evidence and all startup messages still pass through normal Sionna.
+    fsm.local_component_neighbor_freshness: 0.5
+    fsm.local_component_stability_duration: 1.0
+    fsm.local_component_assignment_interval: 0.5
+    fsm.idle_map_wakeup_interval: 0.5
+
+    partitioning.min_unknown: 4000
+    partitioning.min_frontier: 100
+    partitioning.min_free: 3000
+    partitioning.consistent_cost: -5.0
+    partitioning.consistent_cost2: 8.0
+    partitioning.w_unknown: 0.0
+    partitioning.w_first: 1.0
+    partitioning.grid_size: 5.0
+    partitioning.use_swarm_tf: true
+
+    exploration.refine_local: true
+    exploration.refined_num: 7
+    exploration.refined_radius: 5.0
+    exploration.max_decay: 0.8
+    exploration.top_view_num: 15
+    exploration.vm: 1.5
+    exploration.am: 1.0
+    exploration.yd: 1.3962633778
+    exploration.ydd: 1.5707963
+    exploration.w_dir: 1.5
+    exploration.init_plan_num: 2
+    exploration.random_seed: 42
+
+    topo_prm.random_seed: 42
+
+    frontier.cluster_min: 100
+    frontier.cluster_size_xy: 2.0
+    frontier.cluster_size_z: 10.0
+    frontier.min_candidate_dist: 0.5
+    frontier.min_candidate_clearance: 0.21
+    frontier.candidate_dphi: 0.2617993833
+    frontier.candidate_rnum: 3
+    frontier.candidate_rmin: 1.0
+    frontier.candidate_rmax: 1.5
+    frontier.down_sample: 3
+    frontier.min_visib_num: 30
+    frontier.min_view_finish_fraction: 0.2
+
+    perception_utils.top_angle: 0.56125
+    perception_utils.left_angle: 0.69222
+    perception_utils.right_angle: 0.68901
+    perception_utils.max_dist: 4.5
+    perception_utils.vis_dist: 1.0
+
+    heading_planner.yaw_diff: 0.5235987667
+    heading_planner.half_vert_num: 5
+    heading_planner.lambda1: 2.0
+    heading_planner.lambda2: 1.0
+    heading_planner.max_yaw_rate: 0.1745329222
+    heading_planner.w: 20000.0
+    heading_planner.weight_type: 1
+
+    manager.max_vel: 1.5
+    manager.max_acc: 1.0
+    manager.max_jerk: 4.0
+    manager.dynamic_environment: 0
+    manager.local_segment_length: 6.0
+    manager.clearance_threshold: 0.2
+    manager.control_points_distance: 0.5
+    manager.use_geometric_path: true
+    manager.use_kinodynamic_path: true
+    manager.use_topo_path: false
+    manager.use_optimization: true
+    manager.use_active_perception: true
+    manager.min_time: true
+    manager.relax_time1: 0.3
+    manager.relax_time2: 1.5
+    manager.max_yawdot: 2.0943950667
+
+    search.max_tau: 0.8
+    search.init_max_tau: 1.0
+    search.max_vel: 1.5
+    search.vel_margin: 0.25
+    search.max_acc: 1.0
+    search.w_time: 10.0
+    search.horizon: 5.0
+    search.lambda_heu: 10.0
+    search.resolution_astar: 0.025
+    search.time_resolution: 0.8
+    search.margin: 0.2
+    search.allocate_num: 100000
+    search.check_num: 10
+    search.optimistic: false
+
+    astar.lambda_heu: 10000.0
+    astar.resolution_astar: 0.3
+    astar.allocate_num: 1000000
+    astar.max_search_time: 0.001
+
+    # One known-free flood fill classifies all shortlisted viewpoints and also finds a local
+    # connected-component boundary target when no frontier viewpoint is currently reachable.
+    reachability.connectivity_max_nodes: 300000
+    reachability.local_expansion_min_dist: 0.8
+    reachability.local_expansion_max_dist: 3.0
+
+    optimization.ld_smooth: 5.0
+    optimization.ld_dist: 10.0
+    optimization.ld_feasi: 2.0
+    optimization.ld_start: 100.0
+    optimization.ld_end: 0.5
+    optimization.ld_guide: 1.5
+    optimization.ld_waypt: 7.0
+    optimization.ld_view: 0.0
+    optimization.ld_time: 1.5
+    optimization.ld_swarm: 5.0
+    optimization.swarm_safe_dist: 1.0
+    optimization.dist0: 0.7
+    optimization.max_vel: 1.5
+    optimization.max_acc: 1.0
+    optimization.algorithm1: 15
+    optimization.algorithm2: 11
+    optimization.max_iteration_num1: 2
+    optimization.max_iteration_num2: 2000
+    optimization.max_iteration_num3: 200
+    optimization.max_iteration_num4: 200
+    optimization.max_iteration_time1: 0.0001
+    optimization.max_iteration_time2: 0.005
+    optimization.max_iteration_time3: 0.003
+    optimization.max_iteration_time4: 0.003
+
+    bspline.limit_vel: 1.5
+    bspline.limit_acc: 1.0
+    bspline.limit_ratio: 1.1
+
+    multi_map_manager.chunk_size: 200
+    traj_server.pub_traj_id: 4
+    traj_server.drone_num: 5
+    loop_correction.isLoopCorrection: false
